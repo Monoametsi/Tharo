@@ -5,6 +5,16 @@
 	box-sizing: border-box;
 }
 
+::-moz-selection {
+	color: #fff;
+	background-color: #BE6526;
+}
+
+::selection {
+	color: #fff;
+	background-color: #BE6526;
+}
+
 body{
 	margin: 0;
 	padding: 0;
@@ -244,16 +254,31 @@ header{
 }
 
 .video-title-cont{
+	display: none;
+	flex-direction: column;
 	position: absolute;
-	top: 50%;
-	left: 20%;
+	top: 40%;
+	left: 25%;
 	transform: translate(-50%, -50%);
+	width: 37%;
+	max-width: 100%;
+	animation-name: slide-up;
+	animation-duration: 3s;
+	opacity: 1;
+}
+
+@keyframes slide-up{
+	0%{ transform: translate(-50%, 0); opacity: 0; }
+	50%{ transform: translate(-50%, 0); opacity: 0; }
+	100%{ transform: translate(-50%, -50%); opacity: 1; }
 }
 
 .video-title{
 	font-size: 6rem;
 	animation-name: smooth-in;
 	animation-duration: 10s;
+	margin: 0;
+	padding: 0;
 }
 	
 .video-title h1{
@@ -261,26 +286,55 @@ header{
 	align-items: center;
 	color: #BE6526;
 	text-shadow: 0 0 5px #BE6526;
-}
-
-@keyframes smooth-in{
-	from{ font-size: 0; }
-	to{ font-size: 6rem;}
+	margin-bottom: 0;
+	padding: 0;
 }
 
 .video-title-img-cont{
 	display: flex;
 	width: 100px;
-	max-width: 100%;
-	animation-name: smooth-img-in;
-	animation-duration: 10s;
 }
 
 .video-title-img{
 	max-width: 100%;
 }
 
-@keyframes smooth-img-in{
-	from{ width: 0; }
-	to{ width: 100px; }
+.tharo-intro{
+	margin: 0;
+	margin-top: -1.2rem;
+	padding: 0;
+	display: flex;
+    align-items: center;
+}
+
+.tharo-intro p{
+	margin: 0;
+	font-weight: 600;
+	font-size: 1.2rem;
+    overflow: hidden;
+    letter-spacing: .15em;
+}
+
+.tharo-intro p:after{
+    content: '';
+	border: 1px solid transparent;
+    height: 1.5rem;
+    animation-name: blinking;
+    animation-duration: 0.8s;
+    animation-iteration-count: infinite;
+	
+}
+
+.pipe{
+	border: 1px solid transparent;
+    height: 1.5rem;
+    animation-name: blinking;
+    animation-duration: 0.8s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes blinking{
+    0%{ border: 1px solid transparent; }
+    50%{ border: 1px solid #fff; }
+    100%{ border: 1px solid transparent; }
 }
