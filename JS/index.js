@@ -1,4 +1,4 @@
-let index = 0;
+/* let index = 0;
 
 let typeEffector = () => {
 	let typeElem = document.getElementById("intro-msg");
@@ -37,4 +37,4 @@ abtUsVid.onended = function(){
 		abtUsTitle.style.display = 'flex';
 	}
 	
-}
+} */
