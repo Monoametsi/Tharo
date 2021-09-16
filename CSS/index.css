@@ -28,11 +28,15 @@ a{
 }
 
 header{
+	display: none;
 	z-index: 1;
 	position: fixed;
 	width: 100%;
 	top: 0;
 	left: 0;
+	animation-name: smooth-in;
+	animation-duration: 1s;
+	opacity: 1;
 }
 
 .header-cont{
@@ -49,7 +53,7 @@ header{
 	align-items: center;
 	justify-content: space-between;
 	width: 100%;
-	max-width: 1300px;
+	max-width: 1275px;
 }
 
 .logo-cont{
@@ -158,11 +162,20 @@ header{
 }
 
 #nav-cont{
+	display: none;
 	z-index: 1;
 	position: fixed;
 	top: 50%;
     right: 0;
     transform: translate(58%, -50%);
+	opacity: 1;
+	animation-name: smooth-in;
+	animation-duration: 1s;
+}
+
+@keyframes smooth-in{
+	from{ opacity: 0; }
+	to{ opacity: 1; }
 }
 
 .nav-list{
@@ -227,17 +240,22 @@ header{
 	max-width: 100%;
 }
 
-#home{
+#home, #about-tharo, #ab-tharo{
 	position: relative;
 	height: 100vh;
+	overflow: hidden;
+}
+
+.home-page-vid, .abt-us-page-vid{
+	display: flex;
+	/* filter: brightness(40%); */
+	width: 100%;
+	/* height: 100%; */
+	/* max-width: 100%; */
+	object-fit: cover;
 }
 
 .home-page-vid{
-	display: flex;
-	width: 100%;
-	height: 100%;
-	max-width: 100%;
-	object-fit: cover;
 	filter: brightness(40%);
 	animation-name: smooth-vid-in;
 	animation-duration: 10s;
@@ -253,17 +271,47 @@ header{
 	max-width: 100%;
 }
 
-.video-title-cont{
+.video-title-cont, .about-us-video-title-cont{
 	display: none;
 	flex-direction: column;
 	position: absolute;
+	max-width: 100%;
+	/* background-color: red; */
+}
+
+.about-us-video-title-cont{
+	display: none;
+	top: 50%;
+	left: 50%;
+	transform: translate(-16.5%, -50%);
+	height: 100%;
+	width: 60%;
+	box-shadow: -20px 0 20px rgba(0, 0, 0, 0.6);
+	background-color: rgba(0, 0, 0, 0.9);
+	overflow: hidden;
+	animation-name: slide-from-right;
+	animation-duration: 3s;
+}
+
+@keyframes slide-from-right{
+	from{ left: 100%;  transform: translate(0, -50%);}
+	to{ left: 50%;  transform: translate(-16.5%, -50%); }
+}
+
+.about-us-cont{
+	/* align-self: center; */
+	margin-left: 2rem;
+	/* background-color: red; */
+	width: 70%;
+}
+
+.video-title-cont{
 	top: 40%;
 	left: 25%;
 	transform: translate(-50%, -50%);
 	width: 37%;
-	max-width: 100%;
 	animation-name: slide-up;
-	animation-duration: 3s;
+	animation-duration: 2s;
 	opacity: 1;
 }
 
@@ -280,9 +328,23 @@ header{
 	margin: 0;
 	padding: 0;
 }
+
+.about-us-title-cont{
+	display: inline-flex;
+	font-size: 3.2rem;
+	color: #BE6526;
+	text-shadow: 0 0 5px #BE6526;
+	margin: 0;
+	padding: 0;
+}
+
+.about-us-title-cont h1{
+	margin-bottom: 0;
+	padding: 0;
+}
 	
 .video-title h1{
-	display: flex;
+	display: inline-flex;
 	align-items: center;
 	color: #BE6526;
 	text-shadow: 0 0 5px #BE6526;
@@ -300,17 +362,28 @@ header{
 }
 
 .tharo-intro{
+	display: flex;
 	margin: 0;
 	margin-top: -1.2rem;
 	padding: 0;
-	display: flex;
+}
+
+.tharo-intro{
     align-items: center;
 }
 
-.tharo-intro p{
+.tharo-intro p, .about-us-descript-cont p{
 	margin: 0;
 	font-weight: 600;
 	font-size: 1.2rem;
+}
+
+.about-us-descript-cont p{
+	font-size: 1rem;
+	font-weight: 300;
+}
+
+.tharo-intro p{
     overflow: hidden;
     letter-spacing: .15em;
 }
