@@ -214,31 +214,15 @@
 				
 				</div>
 				
-				<!-- <div class="vid-slider-cont">
-				
-					<ul class="vid-slider-list-cont">
-						
-						<li>
-							<img src="/Images/IMG_2021-09-04-17-00-28-443.jpg" class="slider-vid">
-						</li>
-						
-					</ul>
-				
-				</div> -->
-				
 				<div class="vid-slider-cont">
 					
 					<ul class="vid-slider-list-cont">
 						
 						<li class="video-player-cont">
-							
-							<video class="video-cont">
-								<source src="/videos/Tharo-home-vid.mp4" type="video/mp4">
-							</video>
-						  
-							<div class="controls-cont">
+						
+							<div class="controls-cont" id="controls-cont">
 								
-								<div class="start-vid-cont">
+								<div class="start-vid-cont" id="start-vid-cont">
 									
 									<i class="fa fa-play" id="play"></i>
 									<i class="fa fa-pause" id="pause"></i>
@@ -251,17 +235,20 @@
 										<span id="time-tracker">0:12/0:41</span>
 									</div>
 									
-									<div class="volume-cont">
+									<div class="volume-cont" id="volume-cont">
 										<i class="fa fa-volume-up"></i>
+										<i class="fa fa-volume-down" id="mute"></i>
 									</div>
 									
-									<div class="full-screener-cont">
-										
-									</div>
-								
+									<div class="full-screener-cont" id="full-screener-cont"></div>
+									
 								</div>
 								
 							</div>
+							
+							<video class="video-cont" id="video-cont">
+								<source src="/videos/Tharo-home-vid.mp4" type="video/mp4">
+							</video>
 						
 						</li>
 					

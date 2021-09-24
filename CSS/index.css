@@ -296,11 +296,12 @@ header{
 	overflow: hidden;
 	animation-name: slide-from-right;
 	animation-duration: 3s;
+	opacity: 1;
 }
 
 @keyframes slide-from-right{
-	from{ left: 100%;  transform: translate(0, -50%);}
-	to{ left: 50%;  transform: translate(-16.5%, -50%); }
+	from{ left: 100%;  transform: translate(0, -50%); opacity: 0; }
+	to{ left: 50%;  transform: translate(-16.5%, -50%); opacity: 1;}
 }
 
 .about-us-cont{
@@ -535,14 +536,17 @@ header{
 
 .video-cont{
 	display: flex;
+	order: 1;
     overflow: hidden;
 	width: 100%;
     max-width: 100%;
     border-radius: 5px 5px 0 0;
+	transition: 0.3s;
 }
 
 .controls-cont{
 	display: flex;
+	order: 2;
     align-items: center;
     justify-content: space-between;
     background-color: #000;
@@ -550,6 +554,7 @@ header{
     padding: 10px 8px;
     border-radius: 0 0 5px 5px;
 	width: 100%;
+	transition: 0.3s;
 }
 
 .start-vid-cont{
@@ -563,7 +568,7 @@ header{
 	font-size: 1.2rem;
 }
 
-#pause{
+#pause, #mute{
 	display: none;
 }
 
@@ -578,12 +583,34 @@ header{
 }
 
 .full-screener-cont{
-	border: 2px dashed #fff;
+	border: 2px solid #fff;
 	padding: 6px;
 	cursor: pointer;
+	transition: 0.3s;
 }
 
 .volume-cont, .full-screener-cont, .time-tracker-cont{
 	margin-left: 13px;
+}
+
+.minimize-screen{
+	border: 2px dashed #fff;
+	padding: 10px;
+}
+
+.full-screen-converter{
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+}
+
+.add-overlay{
+	border-radius: 0;
+	z-index: 100;
+}
+
+.hide-overflow{
+	overflow: hidden;
 }
 /* asdasd */
