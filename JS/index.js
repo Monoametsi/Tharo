@@ -39,93 +39,193 @@ abtUsVid.onended = function(){
 	
 } */
 
-const vidStarterCont = document.getElementById('start-vid-cont');
+const videos = document.getElementsByClassName('video-player-cont');
+const dots = document.getElementsByClassName('dots');
+const leftArrow = document.getElementById('left-arrow');
+const rightArrow = document.getElementById('right-arrow');
+let vidIndex = 1;
 
-const toggleFunct = (play_btn, pause_btn) => {
-	if(window.getComputedStyle(play_btn, null).display !== 'none'){
-		play_btn.style.display = 'none';
-		pause_btn.style.display = 'flex';
-		return true;
-	}else{
-		play_btn.style.display = 'flex';
-		pause_btn.style.display = 'none';
-		return false;
+const hideElems = () => {
+	for(let dotIndex = 0; dotIndex < dots.length; dotIndex++){
+		dots[dotIndex].classList.remove('dot-background');
+	}
+	
+	for(let vidIndex = 0; vidIndex < videos.length; vidIndex++){
+		videos[vidIndex].style.display = 'none';
+		videos[vidIndex].children[0].pause();
+		videos[vidIndex].classList.remove('in-left', 'in-right', 'out-left', 'out-right');
 	}
 }
 
-vidStarterCont.onclick = function(){
-	const video = this.parentElement.nextElementSibling;
-	const play_btn = this.children[0];
-	const pause_btn = this.children[1];
+const vidSlideShow = () => {
+	hideElems();
 	
-	if(toggleFunct(play_btn, pause_btn)){
-		video.play();
-	}else{
-		video.pause();
+	if(vidIndex > videos.length){
+		vidIndex = 1;
 	}
 	
+	if(vidIndex < 1){
+		vidIndex = videos.length;
+	}
+	
+	videos[vidIndex - 1].style.display = 'flex';
+	dots[vidIndex - 1].classList.add('dot-background');
 }
 
-const muteBtnCont = document.getElementById('volume-cont');
+vidSlideShow();
 
-muteBtnCont.onclick = function(){
-	const unMuteBtn = this.children[0];
-	const muteBtn = this.children[1];
-	const video = this.parentElement.parentElement.nextElementSibling;
+rightArrow.onclick = () => {
 	
-	if(toggleFunct(unMuteBtn, muteBtn)){
-		video.muted = true;
-	}else{
-		video.muted = false;
+	videos[vidIndex - 1].classList.remove('in-left', 'in-right', 'out-right');
+	videos[vidIndex - 1].classList.add('out-left');
+	vidIndex++;
+	setTimeout(() => {
+		vidSlideShow();
+		videos[vidIndex - 1].classList.add('in-left');
+	},300);
+	
+}
+
+leftArrow.onclick = () => {
+	
+	videos[vidIndex - 1].classList.remove('in-left', 'in-right', 'out-left');
+	videos[vidIndex - 1].classList.add('out-right');
+	vidIndex--;
+	setTimeout(() => {
+		vidSlideShow();
+		videos[vidIndex - 1].classList.add('in-right');
+	},300);
+	
+}
+
+const dotSlideShow = () => {
+	let currentImg = 0;
+	let nxtImg = 0;
+	for(let dotPos = 0; dotPos < dots.length; dotPos++){
+		dots[dotPos].onclick = function(){
+			
+			currentImg = dotPos;
+			nxtImg = vidIndex - 1;
+			
+			if(currentImg > nxtImg){
+				videos[nxtImg].classList.remove('in-left', 'in-right', 'out-right');
+				videos[nxtImg].classList.add('out-left');
+				setTimeout(() => {
+					hideElems();
+					this.classList.add('dot-background');
+					videos[dotPos].classList.add('in-left');
+					videos[dotPos].style.display = 'flex';
+				},300);
+			}else if(currentImg === nxtImg){
+				videos[dotPos].style.display = 'flex';
+				return false;
+			}else{
+				videos[nxtImg].classList.remove('in-left', 'in-right', 'out-left');
+				videos[nxtImg].classList.add('out-right');
+				setTimeout(() => {
+					hideElems();
+					this.classList.add('dot-background');
+					videos[dotPos].classList.add('in-right');
+					videos[dotPos].style.display = 'flex';
+				},300);
+			}
+			
+			vidIndex = dotPos + 1;
+		}
 	}
 }
 
-const fullScreenCont = document.getElementById('full-screener-cont');
-let isScreenMax = false;
-const doc = document.documentElement;
-const body = document.body;
+dotSlideShow();
 
-const switchToFullScreen = () => {
-	isScreenMax = true;
-	doc.requestFullscreen();
-	//console.log(doc.requestFullscreen);
-}
+let picIndex = 1;
+const picModal = document.getElementsByClassName('pic-modal-cont');
 
-const minimizeScreen = () => {
-	isScreenMax = false;
-	document.exitFullscreen();
-	//console.log(document.exitFullscreen);
-}
-
-fullScreenCont.onclick = function(){
-	const controls = this.parentElement.parentElement;
-	const video = this.parentElement.parentElement.nextElementSibling;
+const modalActivator = () => {
+	const modal = document.getElementById('modal-cont');
+	const imageCollage = document.getElementsByClassName('pic-cont');
+	const collageSection = document.getElementById('picture-collage-modal-section');
+	const collageModal = document.getElementById('picture-collage-modal-cont');
+	const modalCloser = document.getElementById('modal-closer');
+	const picModal = document.getElementById('pic-modal');
 	
-	doc.classList.toggle('hide-overflow');
-	body.classList.toggle('hide-overflow');
-	controls.classList.toggle('full-screen-converter');
-	controls.classList.toggle('add-overlay');
-	video.classList.toggle('full-screen-converter');
-	fullScreenCont.classList.toggle('minimize-screen');
+	for(let i = 0; i < imageCollage.length; i++){
+		const Image = imageCollage[i];
+		
+		Image.onclick = function(){
+			//picModal.src === this.children[0].src;
+			picIndex = i + 1;
+			modal.classList.remove('slow-out');
+			modal.style.display = 'flex';
+			modalSlider();
+		}
+	}
 	
-	if(isScreenMax){
-		minimizeScreen();
-	}else{
-		switchToFullScreen();
+	modalCloser.onclick = () => {
+		modal.classList.add('slow-out');
+		setTimeout(() => {
+			modal.style.display = 'none';
+		},300);
+	}
+	
+	window.onclick = (event) => {
+		if(event.target.id === modal.id || event.target.id === collageSection.id || event.target.id === collageModal.id){
+			modal.classList.add('slow-out');
+			setTimeout(() => {
+				modal.style.display = 'none';
+			},300);
+		}
 	}
 }
 
-window.onkeydown = (event) => {
-	const controls =  document.getElementById('controls-cont');
-	const video =  document.getElementById('video-cont');
-	console.log(doc.requestFullscreen);
-	if(event.keyCode === 122 || event.keyCode === 27){
-		isScreenMax = false;
-		doc.classList.remove('hide-overflow');
-		body.classList.remove('hide-overflow');
-		controls.classList.remove('full-screen-converter');
-		controls.classList.remove('add-overlay');
-		video.classList.remove('full-screen-converter');
-		fullScreenCont.classList.remove('minimize-screen');
+modalActivator();
+
+function modalSlider(){
+	const imgCounter = document.getElementById('img-counter');
+	
+	const hideModalElems = () => {
+		for(let picIndex = 0; picIndex < picModal.length; picIndex++){
+			picModal[picIndex].style.display = 'none';
+			picModal[picIndex].classList.remove('in-left', 'in-right', 'out-left', 'out-right');
+		}
 	}
+	
+	hideModalElems();
+	
+	if(picIndex > picModal.length){
+		picIndex = 1;
+	}
+	
+	if(picIndex < 1){
+		picIndex = picModal.length;
+	}
+	
+	imgCounter.innerHTML = `${ picIndex } of ${ picModal.length }`;
+	picModal[picIndex - 1].style.display = 'flex';
+}
+
+const leftModalArrow = document.getElementById('left-modal-arrow');
+const rightModalArrow = document.getElementById('right-modal-arrow');
+
+leftModalArrow.onclick = () => {
+	
+	picModal[picIndex - 1].classList.remove('in-left', 'in-right', 'out-right');
+	picModal[picIndex- 1].classList.add('out-left');
+	picIndex--;
+	setTimeout(() => {
+		modalSlider();
+		picModal[picIndex - 1].classList.add('in-left');
+	},300);
+	
+}
+
+rightModalArrow.onclick = () => {
+	
+	picModal[picIndex - 1].classList.remove('in-left', 'in-right', 'out-left');
+	picModal[picIndex - 1].classList.add('out-right');
+	picIndex++;
+	setTimeout(() => {
+		modalSlider();
+		picModal[picIndex - 1].classList.add('in-right');
+	},300);
+	
 }

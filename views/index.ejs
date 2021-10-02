@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" type="image/png" href="/Images/Tharo-icon.png">
 <link rel="stylesheet" href="/fontawesome-free-5.13.0-web/css/fontawesome.min.css">
+<link rel="stylesheet" href="/fontawesome-free-5.13.0-web/css/all.css">
 <link rel="stylesheet" href="/font-awesome-4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="/CSS/index.css">
 <link rel="stylesheet" href="/CSS/index-mobile.css">
@@ -158,7 +159,7 @@
 				<div class="about-us-descript-cont">
 					
 					<p>
-						Hi again, as I said at the beginning of this page, my name is Tharo, I am a 7th-week old Doberman puppy. My name, 
+						Hi again, as I said at the beginning of this page, my name is Tharo, I am a <%= displayLaspedTime("August 4 2021 14:00:00") %> Doberman puppy. My name, 
 						Tharo, is a name that is of the origin of an African language called Setswana, it translates to 3 in English. 
 						Why was I given the name Tharo? That's because I was born with only 3 legs. My disability hasn't stopped me from being the energetic, 
 						active, and playful puppy that I am. Although I might look very different from my siblings, 
@@ -187,11 +188,11 @@
 			<div class="vid-slider-box">
 			
 				<div class="left-arrow">
-					<i class="fa fa-angle-double-left"></i>
+					<i class="fa fa-angle-double-left" id="left-arrow"></i>
 				</div>
 				
 				<div class="right-arrow">
-					<i class="fa fa-angle-double-right"></i>
+					<i class="fa fa-angle-double-right" id="right-arrow"></i>
 				</div>
 				
 				<div class="carousel-nav-cont">
@@ -219,35 +220,25 @@
 					<ul class="vid-slider-list-cont">
 						
 						<li class="video-player-cont">
-						
-							<div class="controls-cont" id="controls-cont">
-								
-								<div class="start-vid-cont" id="start-vid-cont">
-									
-									<i class="fa fa-play" id="play"></i>
-									<i class="fa fa-pause" id="pause"></i>
-									
-								</div>
-								
-								<div class="refine-vid-cont">
-								
-									<div class="time-tracker-cont">
-										<span id="time-tracker">0:12/0:41</span>
-									</div>
-									
-									<div class="volume-cont" id="volume-cont">
-										<i class="fa fa-volume-up"></i>
-										<i class="fa fa-volume-down" id="mute"></i>
-									</div>
-									
-									<div class="full-screener-cont" id="full-screener-cont"></div>
-									
-								</div>
-								
-							</div>
 							
-							<video class="video-cont" id="video-cont">
+							<video class="video-cont" controls id="video-cont">
 								<source src="/videos/Tharo-home-vid.mp4" type="video/mp4">
+							</video>
+						
+						</li>
+						
+						<li class="video-player-cont">
+							
+							<video class="video-cont" controls id="video-cont">
+								<source src="/videos/Tharo.mp4" type="video/mp4">
+							</video>
+						
+						</li>
+						
+						<li class="video-player-cont">
+							
+							<video class="video-cont" controls id="video-cont">
+								<source src="/videos/about-us-vid-2.mp4" type="video/mp4">
 							</video>
 						
 						</li>
@@ -262,6 +253,218 @@
 	
 	</section>
 	
+	<section id="tharos-pictures">
+	
+		<div class="picture-collage-section">
+			<div class="picture-collage-cont">
+				<div class="sect-title-cont">  
+					<h1> Pictures </h1>
+					<p> Check out my pictures.</p>
+				</div>
+				
+				<div class="picture-collage">
+					
+					<div class="pic-cont">
+						<img src="/Images/Tharo-abt-us.jpg" class="pic">
+					</div>
+					
+					<div class="pic-cont">
+						<img src="/Images/tharo1.jpg" class="pic">
+					</div>
+					
+					<div class="pic-cont">
+						<img src="/Images/Tharo-abt-us.jpg" class="pic">
+					</div>
+					
+					<div class="pic-cont">
+						<img src="/Images/tharo1.jpg" class="pic">
+					</div>
+					
+					<div class="pic-cont">
+						<img src="/Images/Tharo-abt-us.jpg" class="pic">
+					</div>
+					
+					<div class="pic-cont">
+						<img src="/Images/tharo1.jpg" class="pic">
+					</div>
+					
+					<div class="pic-cont">
+						<img src="/Images/Tharo-abt-us.jpg" class="pic">
+					</div>
+					
+					<div class="pic-cont">
+						<img src="/Images/tharo1.jpg" class="pic">
+					</div>
+					
+					<div class="pic-cont">
+						<img src="/Images/Tharo-abt-us.jpg" class="pic">
+					</div>
+					
+					<div class="pic-cont">
+						<img src="/Images/tharo1.jpg" class="pic">
+					</div>
+					
+					<div class="pic-cont">
+						<img src="/Images/Tharo-abt-us.jpg" class="pic">
+					</div>
+					
+					<div class="pic-cont">
+						<img src="/Images/tharo1.jpg" class="pic">
+					</div>
+					
+				</div>
+			</div>
+		</div>
+		
+		<div class="modal-cont" id="modal-cont"> 
+		
+			<div class="modal-closer-cont">
+				<i class="fa fa-times modal-closer" id="modal-closer"></i>
+			</div>
+			
+			<div class="arrow-cont left">
+				<i class="fas fa-arrow-alt-circle-left arrow" id="left-modal-arrow"></i>
+			</div>
+			
+			<div class="arrow-cont right">
+				<i class="fas fa-arrow-alt-circle-right arrow" id="right-modal-arrow"></i>
+			</div>
+			
+			<div class="img-counter" id="img-counter">
+				<span id="img-counter">1 of 10</span>
+			</div>
+			
+			<div class="picture-collage-modal-section" id="picture-collage-modal-section">
+				
+				<div class="picture-collage-modal-cont" id="picture-collage-modal-cont">
+					<ul class="picture-collage-modal">
+					
+						<li class="pic-modal-cont">
+							<img src="/Images/Tharo-abt-us.jpg" class="pic-modal">
+						</li>
+						
+						<li class="pic-modal-cont">
+							<img src="/Images/tharo1.jpg" class="pic-modal">
+						</li>
+						
+						<li class="pic-modal-cont">
+							<img src="/Images/Tharo-abt-us.jpg" class="pic-modal">
+						</li>
+						
+						<li class="pic-modal-cont">
+							<img src="/Images/tharo1.jpg" class="pic-modal">
+						</li>
+						
+						<li class="pic-modal-cont">
+							<img src="/Images/Tharo-abt-us.jpg" class="pic-modal">
+						</li>
+						
+						<li class="pic-modal-cont">
+							<img src="/Images/tharo1.jpg" class="pic-modal">
+						</li>
+						
+						<li class="pic-modal-cont">
+							<img src="/Images/Tharo-abt-us.jpg" class="pic-modal">
+						</li>
+						
+						<li class="pic-modal-cont">
+							<img src="/Images/tharo1.jpg" class="pic-modal">
+						</li>
+						
+						<li class="pic-modal-cont">
+							<img src="/Images/Tharo-abt-us.jpg" class="pic-modal">
+						</li>
+						
+						<li class="pic-modal-cont">
+							<img src="/Images/tharo1.jpg" class="pic-modal">
+						</li>
+						
+						<li class="pic-modal-cont">
+							<img src="/Images/Tharo-abt-us.jpg" class="pic-modal">
+						</li>
+						
+						<li class="pic-modal-cont">
+							<img src="/Images/tharo1.jpg" class="pic-modal">
+						</li>
+						
+					</ul>
+				</div>
+				
+			</div>
+		
+		</div>
+		
+	</section>
+	
+	<section id="contact">
+		
+		<div class="contact-section">
+			<div class="contact-cont">
+				<div class="contact-form-cont">
+					<div class="sect-title-cont">  
+						<h1> Contact Me </h1>
+						<p> Would you love to give me a place in your home?<br> Contact me and lets unite!!! </p>
+					</div>
+					
+					<form method="POST" action="/" class="contact-form">
+						<div class="inputField-group-cont">
+							<div class="inputField-cont">
+								<input type="text" placeholder="Name" name="name" class="inputField" id="name">
+								<span class="err-msg">Nma</span>
+							</div>
+							
+							<div class="inputField-cont">
+								<input type="text" placeholder="Surname" name="surname" class="inputField" id="surname">
+								<span class="err-msg"></span>
+							</div>
+						</div>
+						
+						<div class="inputField-group-cont">
+							<div class="inputField-cont">
+								<input type="email" placeholder="Email" name="email" class="inputField" id="email">
+								<span class="err-msg"></span>
+							</div>
+							
+							<div class="inputField-cont">
+								<input type="tel" placeholder="Telephone or Cell Phone or Whatsapp" name="tel" class="inputField" id="tel">
+								<span class="err-msg"></span>
+							</div>
+						</div>
+						
+						<div class="inputField-cont textarea">
+							<textarea class="inputField" name="message" placeholder="Message" rows="4" cols="50"></textarea>
+							<span class="err-msg"></span>
+						</div>
+						
+						<div class="sub-btn-cont">
+							<input type="submit" value="Submit" id="sub-btn">
+						</div>
+					</form>
+					
+				</div>
+			</div>
+		</div>
+		
+	</section>
+	
+	<footer>
+		
+		<div class="footer-cont">
+			<div class="footer">
+			
+				<div class="copyright-cont">
+					<h4>&copy; 2021 <a href="https://glacial-atoll-14823.herokuapp.com/">MJ Solutions</a></h4>
+				</div>
+				
+				<a href="/" class="footer-logo-cont">
+					<img src="/Images/Tharo.png" class="footer-logo">
+				</a>
+			
+			</div>
+		</div>
+		
+	</footer>
 </body>
+<!-- ^((\+|00|09)\d{2,3}|0)\d{9}$ -->
 <script src="/JS/index.js"></script>
 </html>
