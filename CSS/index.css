@@ -21,6 +21,10 @@ body{
 	font-family: "Poppins", sans-serif;
 	background-color: #001f3f;
 	color: #fff;
+	/* background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: cover;
+	background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('/Images/wp1843037.jpg') */
 }
 
 .hide-overflow{
@@ -875,15 +879,16 @@ footer{
 	color: red;
 	font-size: 1rem;
 	margin-left: 5px;
+	transition: 0.3s;
 }
 
 .redBox{
-	border: 1px solid red;
+	transition: 0.3s;
+	border-bottom: 1px solid red;
 }
 
 .redBox:focus{
-	border: 1px solid red;
-	box-shadow: 0 0 2px red;
+	border-bottom: 1px solid red;
 }
 
 .sub-btn-cont{

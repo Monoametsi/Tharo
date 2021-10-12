@@ -147,14 +147,17 @@ const modalActivator = () => {
 	const collageModal = document.getElementById('picture-collage-modal-cont');
 	const modalCloser = document.getElementById('modal-closer');
 	const picModal = document.getElementById('pic-modal');
+	const body = document.body;
+	const html = document.documentElement;
 	
 	for(let i = 0; i < imageCollage.length; i++){
 		const Image = imageCollage[i];
 		
 		Image.onclick = function(){
-			//picModal.src === this.children[0].src;
 			picIndex = i + 1;
 			modal.classList.remove('slow-out');
+			body.classList.add('hide-overflow');
+			html.classList.add('hide-overflow');
 			modal.style.display = 'flex';
 			modalSlider();
 		}
@@ -164,6 +167,8 @@ const modalActivator = () => {
 		modal.classList.add('slow-out');
 		setTimeout(() => {
 			modal.style.display = 'none';
+			body.classList.remove('hide-overflow');
+			html.classList.remove('hide-overflow');
 		},300);
 	}
 	
