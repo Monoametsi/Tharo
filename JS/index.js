@@ -44,6 +44,20 @@ const dots = document.getElementsByClassName('dots');
 const leftArrow = document.getElementById('left-arrow');
 const rightArrow = document.getElementById('right-arrow');
 let vidIndex = 1;
+let isOpen;
+
+const hideOverflow = () =>{
+	const body = document.body;
+	const html = document.documentElement;
+	
+	if(isOpen === true){
+		body.classList.add('hide-overflow');
+		html.classList.add('hide-overflow');
+	}else{
+		body.classList.remove('hide-overflow');
+		html.classList.remove('hide-overflow'); 
+	}
+}
 
 const hideElems = () => {
 	for(let dotIndex = 0; dotIndex < dots.length; dotIndex++){
@@ -147,8 +161,6 @@ const modalActivator = () => {
 	const collageModal = document.getElementById('picture-collage-modal-cont');
 	const modalCloser = document.getElementById('modal-closer');
 	const picModal = document.getElementById('pic-modal');
-	const body = document.body;
-	const html = document.documentElement;
 	
 	for(let i = 0; i < imageCollage.length; i++){
 		const Image = imageCollage[i];
@@ -156,8 +168,8 @@ const modalActivator = () => {
 		Image.onclick = function(){
 			picIndex = i + 1;
 			modal.classList.remove('slow-out');
-			body.classList.add('hide-overflow');
-			html.classList.add('hide-overflow');
+			isOpen = true;
+			hideOverflow();
 			modal.style.display = 'flex';
 			modalSlider();
 		}
@@ -165,18 +177,20 @@ const modalActivator = () => {
 	
 	modalCloser.onclick = () => {
 		modal.classList.add('slow-out');
+		isOpen = false;
 		setTimeout(() => {
 			modal.style.display = 'none';
-			body.classList.remove('hide-overflow');
-			html.classList.remove('hide-overflow');
+			hideOverflow();
 		},300);
 	}
 	
 	window.onclick = (event) => {
 		if(event.target.id === modal.id || event.target.id === collageSection.id || event.target.id === collageModal.id){
 			modal.classList.add('slow-out');
+			isOpen = false;
 			setTimeout(() => {
 				modal.style.display = 'none';
+				hideOverflow();
 			},300);
 		}
 	}

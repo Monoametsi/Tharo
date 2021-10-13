@@ -661,7 +661,7 @@ footer{
 	transform: scale(1.1);
 }
 
-.modal-cont{
+.modal-cont, .submission-results-modal{
 	position: fixed;
 	animation-name: slow-in;
 	animation-duration: 0.3s;
@@ -920,6 +920,121 @@ footer{
 	box-shadow: 0 0 2px #BE6526;
 	background-color: transparent;
 }
+
+/* Result-box -- Start */
+
+.submission-results-modal{
+	display: none;
+}
+
+.sub-results-modal-cont{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 550px;
+	max-width: 100%;
+	padding: 1rem 1.5rem;
+	/* background-color: red; */
+}
+
+.sub-results-modal-content{
+	display: flex;
+	padding: 1rem;
+	width: 100%;
+	justify-content: center;
+	align-items: center;
+	background-color: #fff;
+	border-radius: 5px;
+	box-shadow: 0 0 25px rgba(0,0,0,0.9);
+}
+
+.results-cont{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+
+.success > i{
+	animation-name: glow;
+	animation-duration: 1s;
+	animation-iteration-count: infinite;
+	color: #7fff00;
+	text-shadow: 0 0 10px #7fff00;
+}
+
+.fail > i, .success > i{
+	font-size: 3.5rem;
+}
+
+.fail > i{
+	animation-name: glow-fail;
+	animation-duration: 1s;
+	animation-iteration-count: infinite;
+	text-shadow: 0 0 10px red;
+}
+
+.results-cont > h1, .results-cont > h4{
+	font-family: Montserrat, sans-serif;
+	color: #7fff00;
+	margin-top: 8px;
+	text-align: center;
+}
+
+.fail > h1, .fail > i, .fail > h1{
+	color: red;
+}
+
+.results-cont h4{
+	margin-top: 0;
+	color: #000;
+}
+
+@keyframes glow{
+	0%{ text-shadow: 0 0 10px #7fff00; }
+	50%{ text-shadow: 0 0 0 #7fff00; }
+	100%{ text-shadow: 0 0 10px #7fff00; }
+}
+
+@keyframes glow-fail{
+	0%{ text-shadow: 0 0 10px red; }
+	50%{ text-shadow: 0 0 0 red; }
+	100%{ text-shadow: 0 0 10px red; }
+}
+
+.fail, .success, .sub-results-modal-content{
+	display: none;
+}
+
+.modal-preloader{
+	display: none;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	overflow: hidden;
+	width: 100%;
+}
+
+.modal-preloader > h1{
+	margin: 0;
+	animation-name: loader-glow;
+	animation-duration: 1.5s;
+	animation-iteration-count: infinite;
+}
+
+@keyframes loader-glow{
+	0%{ text-shadow: 0 0 10px #BE6526; }
+	50%{ text-shadow: -1px -1px 0 rgba(255, 255, 255, 1), 1px -1px 0 rgba(255, 255, 255, 1), -1px 1px 0 rgba(255, 255, 255, 1), 1px 1px 0 rgba(255, 255, 255, 1); }
+	100%{ text-shadow: 0 0 10px #BE6526; }
+}
+
+.loader-img{
+	border-radius: 5px;
+	/* background-color: #fff; */
+	max-width: 100%;
+}
+
+/* Result-box -- End */
 
 /* Form-End */
 

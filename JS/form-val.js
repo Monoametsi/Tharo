@@ -105,6 +105,12 @@ email.addEventListener('input', email_validator);
 tel.addEventListener('input', tel_validator);
 
 const subBtn = document.getElementById('sub-btn');
+const formModal = document.getElementById('submission-results-modal');
+const formModalCloser = document.getElementById('modal-closer1');
+const preLoader = document.getElementById('modal-preloader');
+const success = document.getElementById('success');
+const fail = document.getElementById('fail');
+
 
 const formSubmitter = async function(event){
 	event.preventDefault();

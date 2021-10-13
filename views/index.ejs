@@ -447,12 +447,33 @@
 		
 	</section>
 	
-	<div class="submission-results-modal">
+	<div class="submission-results-modal" id="submission-results-modal">
+		<div class="modal-closer-cont">
+			<i class="fa fa-times modal-closer" id="modal-closer1"></i>
+		</div>
+		
 		<div class="sub-results-modal-cont">
-			<div class="sub-results-modal-content">
-				<div class="results-cont">
+			
+			<div class="modal-preloader" id="modal-preloader">
+				<img src="/Images/monophy.gif" class="loader-img">
+				<h1>LOADING...</h1>
+			</div>
+			
+			<div class="sub-results-modal-content" id="sub-results-modal-content">
+				<div class="results-cont success" id="success">
+				<!-- Sucess --Start-- -->
 					<i class="fa fa-check"></i>
-					<h1>You submission was successful</h1>
+					<h1>Success</h1>
+					<h4>Your submission was successful!!!</h4>
+				<!-- Sucess --End-- -->
+				</div>
+				
+				<div class="results-cont fail" id="fail">
+				<!-- Failure --Start-- -->
+					<i class="fa fa-times"></i>
+					<h1>Failure</h1>
+					<h4>Oops something went wrong, please try again!!!</h4>
+				<!-- Failure --End-- -->
 				</div>
 			</div>
 		</div>
