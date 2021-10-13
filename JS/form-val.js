@@ -103,3 +103,58 @@ msg.addEventListener('input', input_validator);
 email.addEventListener('input', email_validator);
 
 tel.addEventListener('input', tel_validator);
+
+const subBtn = document.getElementById('sub-btn');
+
+const formSubmitter = async function(event){
+	event.preventDefault();
+	inputValidator.checkEmpty(name);
+	inputValidator.checkEmpty(msg);
+	inputValidator.mailValidator(email);
+	inputValidator.telValidator(tel);
+	
+	if(!inputValidator.checkEmpty(name)){
+		return inputValidator.checkEmpty(name);
+	}else if(!inputValidator.checkEmpty(msg)){
+		return inputValidator.checkEmpty(msg);
+	}else if(!inputValidator.mailValidator(email)){
+		return inputValidator.mailValidator(email);
+	}else if(!inputValidator.telValidator(tel)){
+		return inputValidator.telValidator(tel);
+	}else{
+		
+		const formData = new URLSearchParams();
+		
+		const userInputInfo = {
+			name: inputValidator.checkEmpty(name),
+			surname: surname.value,
+			email: inputValidator.mailValidator(email),
+			tel: inputValidator.telValidator(tel),
+			message: inputValidator.checkEmpty(msg)
+		}
+		
+		for(const formInfo in userInputInfo){
+			formData.append(formInfo, userInputInfo[formInfo]);
+		}
+		
+		const options = {
+			method: 'POST',
+			body: formData
+		}
+		
+		try{
+			
+			const response = await fetch('/', options);
+			if(!response.ok){
+				throw Error(`${ response.status }`);
+			}
+			
+			console.log(response);
+		}catch(err){
+			console.log(`Error: ${err.message}`);
+		}
+		
+	}
+}
+
+subBtn.addEventListener('click', formSubmitter);
