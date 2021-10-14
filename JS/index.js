@@ -50,7 +50,7 @@ const hideOverflow = () =>{
 	const body = document.body;
 	const html = document.documentElement;
 	
-	if(isOpen === true){
+	if(isOpen){
 		body.classList.add('hide-overflow');
 		html.classList.add('hide-overflow');
 	}else{
@@ -154,6 +154,89 @@ dotSlideShow();
 let picIndex = 1;
 const picModal = document.getElementsByClassName('pic-modal-cont');
 
+const modalExit = function(){
+	this.closeModal = (addElemAnime, removeElem) => {
+		addElemAnime();
+		isOpen = false;
+		setTimeout(() => {
+			removeElem();
+			hideOverflow();
+		},300);
+	}
+	
+	this.closer = (elem, addElemAnime, removeElem) => {
+		const modalHider = () => {
+			this.closeModal(addElemAnime, removeElem);
+		}
+		
+		elem.addEventListener('click', modalHider);
+	}
+	
+	this.animeChangerSlider = (modal) => {
+		const elementAnimation = () => {
+			modal.classList.add('slow-out');
+		}
+		
+		const elementRemoval = () => {
+			modal.classList.remove('slow-out');
+			modal.style.display = 'none';
+		}
+		
+		return [elementAnimation, elementRemoval]
+	}
+	
+	this.windowSliderCloser = (modal) => {
+		const values = this.animeChangerSlider(modal);
+		const elementAnimation = values[0];
+		const elementRemoval = values[1];
+			
+		this.closeModal(elementAnimation, elementRemoval);
+		
+	}
+	
+	this.sliderModal = function(modal, elem){
+		const values = this.animeChangerSlider(modal);
+		const elementAnimation = values[0];
+		const elementRemoval = values[1];
+		
+		this.closer(elem, elementAnimation, elementRemoval);
+	}
+	
+	this.animeChangerForm = (modal, elem, preLoader, modalContent, outcome) => {
+		const elementAnimation = () => {
+			modal.classList.add('slow-out');
+		}
+		
+		const elementRemoval = () => {
+			modal.classList.remove('slow-out');
+			modal.style.display = 'none';
+			preLoader.style.display = 'none';
+			modalContent.style.display = 'none';
+			outcome.style.display = 'none';
+		}
+		
+		return [elementAnimation, elementRemoval];
+	}
+	
+	this.modalForm = function(modal, elem, preLoader, modalContent, outcome){
+		const values = this.animeChangerForm(modal, elem, preLoader, modalContent, outcome);
+		const elementAnimation = values[0];
+		const elementRemoval = values[1];
+		
+		this.closer(elem, elementAnimation, elementRemoval);
+	}
+	
+	this.windowModalFormCloser = function(modal, elem, preLoader, modalContent, outcome){
+		const values = this.animeChangerForm(modal, elem, preLoader, modalContent, outcome);
+		const elementAnimation = values[0];
+		const elementRemoval = values[1];
+		
+		this.closeModal(elementAnimation, elementRemoval);
+	}
+}
+
+const modal_exit = new modalExit();
+
 const modalActivator = () => {
 	const modal = document.getElementById('modal-cont');
 	const imageCollage = document.getElementsByClassName('pic-cont');
@@ -167,7 +250,6 @@ const modalActivator = () => {
 		
 		Image.onclick = function(){
 			picIndex = i + 1;
-			modal.classList.remove('slow-out');
 			isOpen = true;
 			hideOverflow();
 			modal.style.display = 'flex';
@@ -175,25 +257,15 @@ const modalActivator = () => {
 		}
 	}
 	
-	modalCloser.onclick = () => {
-		modal.classList.add('slow-out');
-		isOpen = false;
-		setTimeout(() => {
-			modal.style.display = 'none';
-			hideOverflow();
-		},300);
-	}
+	modal_exit.sliderModal(modal, modalCloser);
 	
-	window.onclick = (event) => {
+	const windowModalCloser = (event) => {
 		if(event.target.id === modal.id || event.target.id === collageSection.id || event.target.id === collageModal.id){
-			modal.classList.add('slow-out');
-			isOpen = false;
-			setTimeout(() => {
-				modal.style.display = 'none';
-				hideOverflow();
-			},300);
+			modal_exit.windowSliderCloser(modal);
 		}
 	}
+	
+	window.addEventListener('click', windowModalCloser);
 }
 
 modalActivator();

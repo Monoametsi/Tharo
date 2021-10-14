@@ -106,11 +106,38 @@ tel.addEventListener('input', tel_validator);
 
 const subBtn = document.getElementById('sub-btn');
 const formModal = document.getElementById('submission-results-modal');
+const modalContent = document.getElementById('sub-results-modal-content');
+const modalContainer = document.getElementById('sub-results-modal-cont');
 const formModalCloser = document.getElementById('modal-closer1');
 const preLoader = document.getElementById('modal-preloader');
 const success = document.getElementById('success');
 const fail = document.getElementById('fail');
 
+const formResults = function() {
+	this.loading = () => {
+		formModal.style.display = 'flex';
+		preLoader.style.display = 'flex';
+	}
+	
+	this.showResults = (outcome) => {
+		preLoader.style.display = 'none';
+		modalContent.style.display = 'flex';
+		outcome.style.display = 'flex';
+		
+		modal_exit.modalForm(formModal, formModalCloser, preLoader, modalContent, outcome);
+		
+		const windowModalCloser = (event) => {
+			
+			if(event.target.id === formModal.id || event.target.id === modalContainer.id){
+				modal_exit.windowModalFormCloser(formModal, formModalCloser, preLoader, modalContent, outcome);
+			}
+		}
+		
+		window.addEventListener('click', windowModalCloser);
+	}
+}
+
+const form_results = new formResults();
 
 const formSubmitter = async function(event){
 	event.preventDefault();
@@ -148,15 +175,19 @@ const formSubmitter = async function(event){
 			body: formData
 		}
 		
+		isOpen = true;
+		
 		try{
-			
-			const response = await fetch('/', options);
+			hideOverflow();
+			const response = await fetch('/', options, form_results.loading());
 			if(!response.ok){
 				throw Error(`${ response.status }`);
 			}
 			
+			form_results.showResults(success);
 			console.log(response);
 		}catch(err){
+			form_results.showResults(fail);
 			console.log(`Error: ${err.message}`);
 		}
 		
