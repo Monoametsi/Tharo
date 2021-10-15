@@ -393,11 +393,26 @@
 			</div>
 		
 		</div>
-		
+	
 	</section>
 	
+	<%
+	   const { name, surname, email, tel, message } = formData;
+	   let nameVal;
+	   let emailVal;
+	   let telVal;
+	   let messageVal;
+	   
+	   if(req.method === 'POST'){
+		   nameVal = fieldValidator.checkEmpty(name);
+		   emailVal = fieldValidator.mailValidator(email);
+		   telVal = fieldValidator.telValidator(tel);
+		   messageVal = fieldValidator.checkEmpty(message);
+	   }
+	%>
+	
 	<section id="contact">
-		
+	
 		<div class="contact-section">
 			<div class="contact-cont">
 				<div class="contact-form-cont">
@@ -409,31 +424,71 @@
 					<form method="POST" action="/" class="contact-form">
 						<div class="inputField-group-cont">
 							<div class="inputField-cont">
+								<% if(name === undefined) { %>
 								<input type="text" placeholder="Name" name="name" class="inputField" id="name">
 								<span class="err-msg"></span>
+								<% }else if(name !== undefined && nameVal[1] === false) { %>
+								<input type="text" placeholder="Name" name="name" class="inputField" id="name" value="<%= name %>">
+								<span class="err-msg" style="display: flex;"><%= nameVal[0] %></span>
+								<% }else if(name !== undefined && nameVal[1]){ %>
+									<input type="text" placeholder="Name" name="name" class="inputField" id="name" value="<%= name %>">
+									<span class="err-msg"></span>
+								<% } %>
 							</div>
 							
 							<div class="inputField-cont">
+								<% if (surname === undefined) { %>
 								<input type="text" placeholder="Surname" name="surname" class="inputField" id="surname">
 								<span class="err-msg"></span>
+								<% }else { %>
+								<input type="text" placeholder="Surname" name="surname" class="inputField" id="surname" value="<%= surname %>">
+								<span class="err-msg"></span>
+								<% } %>
 							</div>
+							
 						</div>
 						
 						<div class="inputField-group-cont">
 							<div class="inputField-cont">
+								<% if(email === undefined) {%>
 								<input type="email" placeholder="Email" name="email" class="inputField" id="email">
 								<span class="err-msg"></span>
+								<% }else if(email !== undefined && !emailVal[1]) { %>
+								<input type="email" placeholder="Email" name="email" class="inputField" id="email" value="<%= email %>">
+								<span class="err-msg" style="display: flex;"><%= emailVal[0] %></span>
+								<% }else if(email !== undefined && emailVal[1]){ %>
+								<input type="email" placeholder="Email" name="email" class="inputField" id="email" value="<%= email %>">
+								<span class="err-msg"></span>
+								<% } %>
 							</div>
 							
 							<div class="inputField-cont">
+								
+								<% if(tel === undefined) {%>
 								<input type="tel" placeholder="Telephone or Cell Phone or Whatsapp" name="tel" class="inputField" id="tel">
 								<span class="err-msg"></span>
+								<% }else if(tel !== undefined && !telVal[1]) { %>
+								<input type="tel" placeholder="Telephone or Cell Phone or Whatsapp" name="tel" class="inputField" id="tel" value="<%= tel %>">
+								<span class="err-msg" style="display: flex;"><%= telVal[0] %></span>
+								<% }else if(tel !== undefined && telVal[1]){ %>
+								<input type="tel" placeholder="Telephone or Cell Phone or Whatsapp" name="tel" class="inputField" id="tel" value="<%= tel %>">
+								<span class="err-msg"></span>
+								<% } %>
+								
 							</div>
 						</div>
 						
 						<div class="inputField-cont textarea">
+							<% if(message === undefined) { %>
 							<textarea class="inputField" name="message" placeholder="Message" id="message" rows="4" cols="50"></textarea>
 							<span class="err-msg"></span>
+							<% }else if(message !== undefined && messageVal[1] === false) { %>
+							<textarea class="inputField" name="message" placeholder="Message" id="message" rows="4" cols="50"><%= message %></textarea>
+							<span class="err-msg" style="display: flex;"><%= messageVal[0] %></span>
+							<% }else if(message !== undefined && messageVal[1]){ %>
+							<textarea class="inputField" name="message" placeholder="Message" id="message" rows="4" cols="50"><%= message %></textarea>
+							<span class="err-msg"></span>
+							<% } %>
 						</div>
 						
 						<div class="sub-btn-cont">
