@@ -21,6 +21,14 @@ app.get('/', index_get);
 
 app.post('/', index_post);
 
+app.get('/submission-success', (req, res) => {
+	res.status(200).render('submission-results');
+});
+
+app.get('/submission-failure', (req, res) => {
+	res.status(500).render('submission-results');
+});
+
 const PORT = process.env.PORT;
 
 app.listen(PORT, () => {

@@ -176,9 +176,9 @@ const formSubmitter = async function(event){
 		}
 		
 		isOpen = true;
-		
+		hideOverflow();
 		try{
-			hideOverflow();
+			
 			const response = await fetch('/', options, form_results.loading());
 			if(!response.ok){
 				throw Error(`${ response.status }`);
