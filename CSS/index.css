@@ -661,7 +661,7 @@ footer{
 	transform: scale(1.1);
 }
 
-.modal-cont, .submission-results-modal{
+.modal-cont, .submission-results-modal, .preloader-cont{
 	position: fixed;
 	animation-name: slow-in;
 	animation-duration: 0.3s;
@@ -1006,7 +1006,7 @@ footer{
 	display: none;
 }
 
-.modal-preloader{
+.modal-preloader, .loader-cont{
 	display: none;
 	flex-direction: column;
 	justify-content: center;
@@ -1015,7 +1015,15 @@ footer{
 	width: 100%;
 }
 
-.modal-preloader > h1{
+.loader-cont{
+	display: flex;
+}
+
+.loader-cont{
+	margin: 1rem;
+}
+
+.modal-preloader > h1, .loader-cont > h1{
 	margin: 0;
 	animation-name: loader-glow;
 	animation-duration: 1.5s;
@@ -1028,7 +1036,7 @@ footer{
 	100%{ text-shadow: 0 0 10px #BE6526; }
 }
 
-.loader-img{
+.loader-img, .preloader-img{
 	border-radius: 5px;
 	/* background-color: #fff; */
 	max-width: 100%;

@@ -14,19 +14,25 @@ app.disable('etag');
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(dirname)));
+app.use(express.static(path.join(dirname, 'submission-results')));
 dotenv.config({path: path.join(__dirname, '.env')});
 app.set('view engine', 'ejs');
+
+app.use('*', (req, res, next) => {
+	res.locals.req = req;
+	next();
+});
 
 app.get('/', index_get);
 
 app.post('/', index_post);
 
 app.get('/submission-success', (req, res) => {
-	res.status(200).render('submission-results');
+	res.status(200).render('submission-results')
 });
 
 app.get('/submission-failure', (req, res) => {
-	res.status(500).render('submission-results');
+	res.status(500).render('submission-results')
 });
 
 const PORT = process.env.PORT;

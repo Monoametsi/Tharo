@@ -1,3 +1,45 @@
+let isOpen;
+
+const hideOverflow = () => {
+	const body = document.body;
+	const html = document.documentElement;
+	
+	if(isOpen){
+		body.classList.add('hide-overflow');
+		html.classList.add('hide-overflow');
+	}else{
+		body.classList.remove('hide-overflow');
+		html.classList.remove('hide-overflow'); 
+	}
+}
+
+const preloaderObj = function(){
+	
+	const preloaderCont = document.getElementById('preloader-cont');
+	
+	this.run_preloader = () => {
+		preloaderCont.style.display = 'flex';
+		isOpen = true;
+		hideOverflow();
+	}
+	
+	this.end_preloader = () => {
+		preloaderCont.classList.add('slow-out');
+		setTimeout(() => {
+			isOpen = false;
+			hideOverflow();
+			preloaderCont.style.display = 'none';
+		}, 300);
+		
+		window.addEventListener('load', this.end_preloader);
+	}
+}
+
+const preloader = new preloaderObj();
+
+preloader.run_preloader();
+preloader.end_preloader();
+
 /* let index = 0;
 
 let typeEffector = () => {
@@ -44,20 +86,6 @@ const dots = document.getElementsByClassName('dots');
 const leftArrow = document.getElementById('left-arrow');
 const rightArrow = document.getElementById('right-arrow');
 let vidIndex = 1;
-let isOpen;
-
-const hideOverflow = () =>{
-	const body = document.body;
-	const html = document.documentElement;
-	
-	if(isOpen){
-		body.classList.add('hide-overflow');
-		html.classList.add('hide-overflow');
-	}else{
-		body.classList.remove('hide-overflow');
-		html.classList.remove('hide-overflow'); 
-	}
-}
 
 const hideElems = () => {
 	for(let dotIndex = 0; dotIndex < dots.length; dotIndex++){

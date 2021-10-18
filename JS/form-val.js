@@ -180,8 +180,8 @@ const formSubmitter = async function(event){
 		try{
 			
 			const response = await fetch('/', options, form_results.loading());
-			if(!response.ok){
-				throw Error(`${ response.status }`);
+			if(response.status !== 200){
+				throw Error(`${ response.status }`)
 			}
 			
 			form_results.showResults(success);

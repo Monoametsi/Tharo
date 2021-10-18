@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<%-  include("partials/head-info") -%>
+<body>
+	<div class="sub-results-modal-cont" id="sub-results-modal-cont">
+		<div class="sub-results-modal-content" id="sub-results-modal-content"> 
+		<% if(req.url === "/submission-success") { %>
+			<div class="results-cont success" id="success">
+			<!-- Sucess --Start-- -->
+				<i class="fa fa-check"></i>
+				<h1>Success</h1>
+				<h4>Your submission was successful!!!</h4>
+				<h4>Click <a href="/" class="link">here</a> to return to home page</h4>
+			<!-- Sucess --End-- -->
+			</div>
+		<% }else { %>
+			
+			<div class="results-cont fail" id="fail">
+			<!-- Failure --Start-- -->
+				<i class="fa fa-times"></i>
+				<h1>Failure</h1>
+				<h4>Oops something went wrong, please try again!!!</h4>
+				<h4>Click <a href="/" class="link">here</a> to return to home page</h4>
+			<!-- Failure --End-- -->
+			</div>
+		<% } %>
+		</div>
+	</div>
+</body>
+</html>
