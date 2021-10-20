@@ -2,7 +2,7 @@
 <html lang="en-US">
 <%-  include("partials/head-info") -%>
 <body>
-
+	
 	<div class="preloader-cont" id="preloader-cont">
 		<div class="loader-cont">
 			<img src="/Images/monophy.gif" class="preloader-img">
@@ -48,7 +48,6 @@
 	</header>
 	
 	<aside id="nav-cont">
-	
 		<nav id="nav" class="nav">
 		
 			<ul class="nav-list">
@@ -101,21 +100,18 @@
 			</ul>
 		
 		</nav>
-	
 	</aside>
 	
 	<section id="home">
 		<!-- autoplay -->
-		<video  muted class="home-page-vid" id="home-page-vid">
-			
-			<source src="/videos/Tharo-home-vid.mp4" type="video/mp4" id="home-vid">
-			
-		</video>
+		<!-- <div class="vid-cont" id="vid-cont"> -->
+			<video muted class="home-page-vid vid" id="home-page-vid" height="100%" width="100%">
+				<source src="/videos/Tharo-home-vid.mp4" type="video/mp4">
+			</video>
+		<!-- </div> -->
 		
 		<div class="video-title-cont" id="video-title-cont">
-			
 			<div class="video-title">
-				
 				<h1>
 					Th
 				<div class="video-title-img-cont">
@@ -123,7 +119,6 @@
 				</div>
 					ro
 				</h1>
-				
 			</div>
 			
 			<div class="tharo-intro">
@@ -138,10 +133,8 @@
 	
 	<section id="about-tharo">
 		<!-- autoplay -->
-		<video muted class="abt-us-page-vid" id="abt-us-page-vid">
-			
-			<source src="/videos/about-us-vid-1.mp4" type="video/mp4" class="home-vid">
-			
+		<video muted class="abt-us-page-vid vid" id="abt-us-page-vid" height="100%" width="100%">
+			<source src="/videos/about-us-vid-1.mp4" type="video/mp4">
 		</video>
 		
 		<div class="about-us-video-title-cont" id="about-us-video-title-cont">
@@ -168,7 +161,6 @@
 			</div>
 			
 		</div>
-	
 	</section>
 	
 	<section id="tharos-videos">
@@ -185,11 +177,11 @@
 			<div class="vid-slider-box">
 			
 				<div class="left-arrow">
-					<i class="fa fa-angle-double-left" id="left-arrow"></i>
+					<i class="fas fa-paw" id="left-arrow"></i>
 				</div>
 				
 				<div class="right-arrow">
-					<i class="fa fa-angle-double-right" id="right-arrow"></i>
+					<i class="fas fa-paw" id="right-arrow"></i>
 				</div>
 				
 				<div class="carousel-nav-cont">
@@ -409,7 +401,6 @@
 	%>
 	
 	<section id="contact">
-	
 		<div class="contact-section">
 			<div class="contact-cont">
 				<div class="contact-form-cont">
@@ -496,7 +487,6 @@
 				</div>
 			</div>
 		</div>
-		
 	</section>
 	
 	<div class="submission-results-modal" id="submission-results-modal">

@@ -14,7 +14,6 @@ const hideOverflow = () => {
 }
 
 const preloaderObj = function(){
-	
 	const preloaderCont = document.getElementById('preloader-cont');
 	
 	this.run_preloader = () => {
@@ -24,14 +23,16 @@ const preloaderObj = function(){
 	}
 	
 	this.end_preloader = () => {
-		preloaderCont.classList.add('slow-out');
-		setTimeout(() => {
-			isOpen = false;
-			hideOverflow();
-			preloaderCont.style.display = 'none';
-		}, 300);
+		const endPreloader = () => {
+			preloaderCont.classList.add('slow-out');
+			setTimeout(() => {
+				isOpen = false;
+				hideOverflow();
+				preloaderCont.style.display = 'none';
+			}, 300);
+		}
 		
-		window.addEventListener('load', this.end_preloader);
+		window.addEventListener('load', endPreloader);
 	}
 }
 
@@ -42,9 +43,9 @@ preloader.end_preloader();
 
 /* let index = 0;
 
-let typeEffector = () => {
-	let typeElem = document.getElementById("intro-msg");
-	let typeMsg = `Hi there! Lovely to meet you, my name is Tharo, and am looking for a place to call home, 
+const typeEffector = () => {
+	const typeElem = document.getElementById("intro-msg");
+	const typeMsg = `Hi there! Lovely to meet you, my name is Tharo, and am looking for a place to call home, 
 				  lets take a trip down this page so I that can tell you a little about myself.`;
 	
 	if(index < typeMsg.length){
@@ -55,31 +56,47 @@ let typeEffector = () => {
     setTimeout(typeEffector, 50);
 }
 
-let homeVid = document.getElementById("home-page-vid");
-let abtUsVid = document.getElementById("abt-us-page-vid");
-let vidTitle = document.getElementById("video-title-cont");
-let abtUsTitle = document.getElementById("about-us-video-title-cont");
-let nav = document.getElementById("nav-cont");
-let header = document.getElementById("header-cont");
+const homeVid = document.getElementById("home-page-vid");
+const abtUsVid = document.getElementById("abt-us-page-vid");
+const vidTitle = document.getElementById("video-title-cont");
+const abtUsTitle = document.getElementById("about-us-video-title-cont");
+const nav = document.getElementById("nav-cont");
+const header = document.getElementById("header-cont");
 
-homeVid.onended = function(){
-	
-	if(homeVid.ended){
+const homeVidStyling = function(){
+	if(this.ended){
 		header.style.display = 'initial';
 		nav.style.display = 'flex';
 		vidTitle.style.display = 'flex';
 		setTimeout(typeEffector, 2100);
 	}
-	
 }
 
-abtUsVid.onended = function(){
-	
-	if(abtUsVid.ended){
+homeVid.addEventListener('ended', homeVidStyling)
+
+const abtUsVidStyling = function(){
+	if(this.ended){
 		abtUsTitle.style.display = 'flex';
 	}
-	
-} */
+}
+
+abtUsVid.addEventListener('ended', abtUsVidStyling) */
+
+const sections = document.getElementsByTagName('section')[0];
+const homeVid = document.getElementById("home-page-vid");
+const vidCont = document.getElementById("vid-cont");
+const getWidth = sections.getBoundingClientRect();
+
+window.onresize = () => {
+	const getWidth = sections.getBoundingClientRect();
+	/* vidCont.style.width = getWidth.width + 'px';
+	vidCont.style.height = getWidth.height + 'px'; */
+	/* homeVid.style.width = getWidth.width + 'px';
+	homeVid.style.height = getWidth.height + 'px'; */
+}
+
+/* homeVid.style.width = getWidth.width + 'px';
+homeVid.style.height = getWidth.height + 'px'; */
 
 const videos = document.getElementsByClassName('video-player-cont');
 const dots = document.getElementsByClassName('dots');

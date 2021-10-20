@@ -256,6 +256,7 @@ header{
 
 #tharos-videos{
 	display: flex;
+	/* height: 100vh; */
 	flex-direction: column;
 }
 
@@ -273,23 +274,18 @@ footer{
 	width: 100%;
 	/* height: 100%; */
 	/* max-width: 100%; */
-	object-fit: cover;
+	object-fit: fill;
 }
 
-.home-page-vid{
+/* .home-page-vid{
 	filter: brightness(40%);
 	animation-name: smooth-vid-in;
 	animation-duration: 10s;
-}
+} */
 
 @keyframes smooth-vid-in{
 	from{ filter: brightness(100%); }
 	to{ filter: brightness(40%);}
-}
-
-.home-vid{
-	width: 100%;
-	max-width: 100%;
 }
 
 .video-title-cont, .about-us-video-title-cont{
@@ -463,6 +459,8 @@ footer{
 	justify-content: center;
 	padding: 0 2rem;
 	margin: auto;
+	width: 100%;
+	max-width: 100%;
 }
 
 .vid-slider-box{
@@ -488,10 +486,19 @@ footer{
 	/* background-color: red; */
 }
 
+#left-arrow{
+	transform: rotate(-90deg);
+}
+
+#right-arrow{
+	transform: rotate(90deg);
+}
+
 .left-arrow i, .right-arrow i{
 	display: flex;
 	height: 2.5rem;
 	width: 2.5rem;
+	padding: 25px;
 	justify-content: center;
 	align-items: center;
 	cursor: pointer;
@@ -675,6 +682,10 @@ footer{
 	z-index: 50;
 	background-color: rgba(0,0,0,0.9);
 	/* background-color: rgba(190,101,38,0.6); */
+}
+
+.preloader-cont{
+	background-color: rgba(0,0,0,1);
 }
 
 @keyframes slow-in{
