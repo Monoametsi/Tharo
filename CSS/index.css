@@ -19,12 +19,12 @@ body{
 	margin: 0;
 	padding: 0;
 	font-family: "Poppins", sans-serif;
-	background-color: #001f3f;
+	background-color: #FFD59A;
 	color: #fff;
-	/* background-repeat: no-repeat;
+	background-repeat: no-repeat;
 	background-attachment: fixed;
 	background-size: cover;
-	background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('/Images/wp1843037.jpg') */
+	background-image: url('/Images/ty.png')
 }
 
 .hide-overflow{
@@ -450,6 +450,7 @@ footer{
 .sect-title-cont p{
 	font-size: 1.4rem;
 	text-align: center;
+	/* color: #000; */
 }
 
 /* Video-Slideshow-Start */
@@ -470,7 +471,7 @@ footer{
 	width: 1000px;
 	max-width: 100%;
 	overflow: hidden;
-	padding: 1.8rem 0;
+	padding: 5rem 0;
 	overflow: hidden;
 	/* background-color: red; */
 }
@@ -508,6 +509,7 @@ footer{
 
 .left-arrow i:hover, .right-arrow i:hover{
 	background-color: #BE6526;
+	color: #000;
 }
 
 .left-arrow{
@@ -520,16 +522,16 @@ footer{
 
 .carousel-nav-cont{
 	position: absolute;
-	transform: translateY(3rem);
+	transform: translateY(4.8rem);
 	align-self: flex-end;
 }
 
 .dots-list-cont li{
-	display: flex;
+	display: inline-flex;
 	margin: 6px;
 }
 
-.dots{
+/* .dots{
 	cursor: pointer;
 	height: 1rem;
 	width: 1rem;
@@ -542,6 +544,27 @@ footer{
 	background-color: #fff;
 	height: 1.2rem;
 	width: 1.2rem;
+} */
+
+.dog{
+	display: inline-flex;
+	height: 40px;
+	width: 40px;
+	max-width: 100%;
+	overflow: hidden;
+	cursor: pointer;
+	/* background-color: red; */
+	border-radius: 100%;
+	transition: 0.3s;
+}
+
+.sitting-dog{
+	max-width: 100%;
+}
+
+.enlargePic{
+	height: 60px;
+	width: 60px;
 }
 
 .vid-slider-cont{
@@ -851,7 +874,7 @@ footer{
 	/* box-shadow: 0 0 25px rgba(190,101,38,0.6);
 	box-shadow: 0 0 25px rgba(255,255,255,0.2);
 	box-shadow: 0 0 25px #001f3f; */
-	background-color: transparent;
+	background-color: #FFD59A;
 }
 
 .inputField-group-cont{

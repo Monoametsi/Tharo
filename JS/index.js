@@ -82,31 +82,31 @@ const abtUsVidStyling = function(){
 
 abtUsVid.addEventListener('ended', abtUsVidStyling) */
 
-const sections = document.getElementsByTagName('section')[0];
+/* const sections = document.getElementsByTagName('section')[0];
 const homeVid = document.getElementById("home-page-vid");
 const vidCont = document.getElementById("vid-cont");
 const getWidth = sections.getBoundingClientRect();
 
 window.onresize = () => {
 	const getWidth = sections.getBoundingClientRect();
-	/* vidCont.style.width = getWidth.width + 'px';
-	vidCont.style.height = getWidth.height + 'px'; */
-	/* homeVid.style.width = getWidth.width + 'px';
-	homeVid.style.height = getWidth.height + 'px'; */
+	vidCont.style.width = getWidth.width + 'px';
+	vidCont.style.height = getWidth.height + 'px';
+	homeVid.style.width = getWidth.width + 'px';
+	homeVid.style.height = getWidth.height + 'px';
 }
 
-/* homeVid.style.width = getWidth.width + 'px';
+homeVid.style.width = getWidth.width + 'px';
 homeVid.style.height = getWidth.height + 'px'; */
 
 const videos = document.getElementsByClassName('video-player-cont');
-const dots = document.getElementsByClassName('dots');
+const dots = document.getElementsByClassName('dog');
 const leftArrow = document.getElementById('left-arrow');
 const rightArrow = document.getElementById('right-arrow');
 let vidIndex = 1;
 
 const hideElems = () => {
 	for(let dotIndex = 0; dotIndex < dots.length; dotIndex++){
-		dots[dotIndex].classList.remove('dot-background');
+		dots[dotIndex].classList.remove('enlargePic');
 	}
 	
 	for(let vidIndex = 0; vidIndex < videos.length; vidIndex++){
@@ -128,7 +128,7 @@ const vidSlideShow = () => {
 	}
 	
 	videos[vidIndex - 1].style.display = 'flex';
-	dots[vidIndex - 1].classList.add('dot-background');
+	dots[vidIndex - 1].classList.add('enlargePic');
 }
 
 vidSlideShow();
@@ -171,7 +171,7 @@ const dotSlideShow = () => {
 				videos[nxtImg].classList.add('out-left');
 				setTimeout(() => {
 					hideElems();
-					this.classList.add('dot-background');
+					this.classList.add('enlargePic');
 					videos[dotPos].classList.add('in-left');
 					videos[dotPos].style.display = 'flex';
 				},300);
@@ -183,7 +183,7 @@ const dotSlideShow = () => {
 				videos[nxtImg].classList.add('out-right');
 				setTimeout(() => {
 					hideElems();
-					this.classList.add('dot-background');
+					this.classList.add('enlargePic');
 					videos[dotPos].classList.add('in-right');
 					videos[dotPos].style.display = 'flex';
 				},300);
