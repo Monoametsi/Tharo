@@ -1,0 +1,49 @@
+@media screen and (max-width: 680px){
+	.pic-cont{
+		width: 250px;
+	}
+}
+
+@media screen and (max-width: 580px){
+	.pic-cont, .pic{
+		width: 100%;
+	}
+	
+	.pic{
+		height: 300px;
+	}
+}
+
+@media screen and (max-width: 490px){
+	.pic{
+		height: auto;
+	}
+	
+	.sect-title-cont{
+		font-size: 2.5rem;
+	}
+}
+
+@media screen and (max-width: 460px){
+	.vid-slider-box-cont{
+		padding: 0 1rem;
+	}
+	
+	.left-arrow, .right-arrow{
+		font-size: 1.8rem;
+	}
+	
+	.left-arrow i, .right-arrow i{
+		padding: 20px;
+	}
+	
+	.dot-cont{
+		height: 30px;
+		width: 30px;
+	}
+	
+	.enlargePic{
+		height: 50px;
+		width: 50px;
+	}
+}

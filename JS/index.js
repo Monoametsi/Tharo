@@ -15,30 +15,46 @@ const hideOverflow = () => {
 
 const preloaderObj = function(){
 	const preloaderCont = document.getElementById('preloader-cont');
-	
-	this.run_preloader = () => {
+	const homeVid = document.getElementById("home-page-vid");
+	/* this.run_preloader = () => {
 		preloaderCont.style.display = 'flex';
 		isOpen = true;
 		hideOverflow();
-	}
+	} */
 	
 	this.end_preloader = () => {
+		const body = document.body;
+		const html = document.documentElement;
+		
 		const endPreloader = () => {
 			preloaderCont.classList.add('slow-out');
 			setTimeout(() => {
-				isOpen = false;
+				/* isOpen = false; */
 				hideOverflow();
 				preloaderCont.style.display = 'none';
+				/* html.scrollTop = body.scrollTop = 0; */
 			}, 300);
 		}
 		
+		/* setTimeout(() => {
+			html.scrollTop = body.scrollTop = 0;
+			homeVid.addEventListener('play', () => {
+				preloaderCont.classList.add('slow-out');
+				setTimeout(() => {
+					preloaderCont.style.display = 'none';
+				},300)
+				
+			});
+		}, 0); */
+		
+		/* homeVid.addEventListener('play', endPreloader); */
 		window.addEventListener('load', endPreloader);
 	}
 }
 
 const preloader = new preloaderObj();
 
-preloader.run_preloader();
+/* preloader.run_preloader(); */
 preloader.end_preloader();
 
 /* let index = 0;
@@ -99,7 +115,7 @@ homeVid.style.width = getWidth.width + 'px';
 homeVid.style.height = getWidth.height + 'px'; */
 
 const videos = document.getElementsByClassName('video-player-cont');
-const dots = document.getElementsByClassName('dog');
+const dots = document.getElementsByClassName('dot-cont');
 const leftArrow = document.getElementById('left-arrow');
 const rightArrow = document.getElementById('right-arrow');
 let vidIndex = 1;

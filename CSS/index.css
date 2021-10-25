@@ -24,7 +24,8 @@ body{
 	background-repeat: no-repeat;
 	background-attachment: fixed;
 	background-size: cover;
-	background-image: url('/Images/ty.png')
+/* 	background-image: linear-gradient(to left, rgba(0,0,0,0.1), rgba(0,0,0,0.1)), url('/Images/ty.png')
+ */	background-image: url('/Images/ty.png');
 }
 
 .hide-overflow{
@@ -352,6 +353,7 @@ footer{
 }
 
 .sect-title-cont h1, .about-us-title-cont, .video-title h1{
+	text-align: center;
 	color: #BE6526;
 	text-shadow: 0 0 5px #BE6526;
 }
@@ -546,7 +548,7 @@ footer{
 	width: 1.2rem;
 } */
 
-.dog{
+.dot-cont{
 	display: inline-flex;
 	height: 40px;
 	width: 40px;
@@ -558,7 +560,7 @@ footer{
 	transition: 0.3s;
 }
 
-.sitting-dog{
+.dot-img{
 	max-width: 100%;
 }
 
@@ -708,6 +710,7 @@ footer{
 }
 
 .preloader-cont{
+	display: flex;
 	background-color: rgba(0,0,0,1);
 }
 
@@ -718,7 +721,7 @@ footer{
 
 .slow-out{
 	animation-name: slow-out;
-	animation-duration: 0.3s;
+	animation-duration: 0.6s;
 }
 
 @keyframes slow-out{
