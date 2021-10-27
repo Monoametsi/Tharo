@@ -57,6 +57,24 @@ const preloader = new preloaderObj();
 /* preloader.run_preloader(); */
 preloader.end_preloader();
 
+const main_color = document.getElementById('main-color');
+const colors = document.getElementsByClassName('bg-color-toggle');
+/* const arr = main_color.className.split(' ');
+arr[1] = 'turquoise'
+main_color.className = arr.join(' '); */
+
+const bg_color_changer = () => {
+	
+	for(let i = 0; i < colors.length; i++){
+		const color = colors[i]
+		const classArr = color.className.split(' ');
+		
+		console.log(classArr)
+	}
+	
+}
+
+bg_color_changer();
 /* let index = 0;
 
 const typeEffector = () => {

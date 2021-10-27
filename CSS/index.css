@@ -37,7 +37,7 @@ a{
 }
 
 header{
-	display: none;
+	display: initial;
 	z-index: 1;
 	position: fixed;
 	width: 100%;
@@ -92,7 +92,7 @@ header{
 	transition: 0.4s;
 }
 
-.bg-color-toggle{
+.bg-color-toggle-main, .bg-color-toggle{
 	display: flex;
 	border: 2px solid #fefefa;
 	width: 40px;
@@ -142,12 +142,12 @@ header{
 	height: 60px;
 }
 
-.living-coral{
-	background-color: #FF6F61;
+.caramel{
+	background-color: #FFD59A;
 }
 
-.rose-quartz{
-	background-color: #F7CAC9;
+.turquoise{
+	background-color: #48D1CC;
 }
 
 .navy-blue{
@@ -158,20 +158,20 @@ header{
 	background-color: #222831;
 }
 
-.lime{
-	background-color: #01FF70;
+.green-ash{
+	background-color: #A0DAA9;
 }
 
 .white{
 	background-color: #FFF;
 }
 
-#border{
+.bg-color-toggle.add-border{
 	border: 2px solid #fefefa;
 }
 
 #nav-cont{
-	display: none;
+	display: flex;
 	z-index: 1;
 	position: fixed;
 	top: 50%;
@@ -778,6 +778,7 @@ footer{
 
 .picture-collage-modal-section{
 	display: flex;
+	align-items: center;
 	justify-content: center;
 	padding: 1rem 1.5rem;
 	/* margin: 2rem 1rem; */
@@ -786,6 +787,7 @@ footer{
 
 .picture-collage-modal-cont{
 	display: flex;
+	align-items: center;
 	justify-content: center;
 	width: 100%;
 	max-width: 600px;
@@ -795,11 +797,14 @@ footer{
 
 .picture-collage-modal{
 	display: flex;
+	align-items: center;
 	list-style: none;
 	padding: 0;
+	/* background-color: red; */
 }
 
 .pic-modal-cont{
+	background-color: red;
 	display: none;
 	align-items: center;
 	justify-content: center;
@@ -861,6 +866,7 @@ footer{
 }
 
 .inputField-cont{
+	padding: 8px;
 	width: 400px;
 	max-width: 100%;
 }
@@ -868,7 +874,7 @@ footer{
 .textarea{
 	resize: vertical;
 	width: 100%;
-	max-width: 100%;
+	margin-bottom: 1rem;
 }
 
 .contact-form{
@@ -893,16 +899,12 @@ footer{
 	margin-bottom: 3rem;
 }
 
-.textarea{
-	margin-bottom: 1rem;
-}
-
 .inputField{
 	color: #fff;
 	width: 100%;
 	background-color: transparent;
 	padding-bottom: 8px;
-	margin: 5px;
+	margin: 5px 0;
 	font-size: 1rem;
 	border: none;
 	outline: none;
@@ -974,7 +976,7 @@ footer{
 	align-items: center;
 	width: 550px;
 	max-width: 100%;
-	padding: 1rem 1.5rem;
+	padding: 1rem;
 	/* background-color: red; */
 }
 
@@ -1092,7 +1094,7 @@ footer{
 .footer-cont{
 	display: flex;
 	justify-content: center;
-	padding: 0 1rem;
+	padding: 0 1.5rem;
 	background-color: #151b26;
 }
 
@@ -1100,8 +1102,8 @@ footer{
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	width: 100%;
-	max-width: 1170px;
+	width: 900px;
+	max-width: 100%;
 }
 
 .copyright-cont h4{

@@ -1,9 +1,31 @@
+@media screen and (max-width: 790px){
+	.contact-form{
+		padding: 1rem;
+	}
+}
+
+@media screen and (max-width: 700px){
+	.inputField-group-cont{
+		flex-direction: column;
+	}
+	
+	.inputField-cont{
+		width: 100%;
+		margin-bottom: 1rem;
+	}
+	
+	.inputField-group-cont{
+		margin-bottom: 0;
+	}
+}
+
 @media screen and (max-width: 680px){
 	.picture-collage-modal-section{
 		padding: 1rem;
+		align-items: stretch;
 	}
 	
-	.pic-modal{
+	.pic-modal, .pic-modal-cont, .picture-collage-modal{
 		height: 100%;
 		max-height: 500px;
 	}
@@ -37,18 +59,29 @@
 	}
 }
 
-@media screen and (max-width: 490px){
+@media screen and (max-width: 550px){
+	.contact-form-cont > .sect-title-cont h1{
+		line-height: 4rem;
+		margin-bottom: 1.6rem;
+	}
+}
+
+@media screen and (max-width: 490px){	
 	.sect-title-cont{
 		font-size: 2.5rem;
+	}
+	
+	.sect-title-cont p{
+		font-size: 1.2rem;
 	}
 }
 
 @media screen and (max-width: 460px){
-	.vid-slider-box-cont{
+	.vid-slider-box-cont, .footer-cont{
 		padding: 0 1rem;
 	}
 	
-	.picture-collage-section{
+	.picture-collage-section, .contact-section{
 		padding: 1rem;
 	}
 	
