@@ -57,19 +57,50 @@ const preloader = new preloaderObj();
 /* preloader.run_preloader(); */
 preloader.end_preloader();
 
-const main_color = document.getElementById('main-color');
-const colors = document.getElementsByClassName('bg-color-toggle');
-/* const arr = main_color.className.split(' ');
-arr[1] = 'turquoise'
-main_color.className = arr.join(' '); */
-
 const bg_color_changer = () => {
+	const borderClassName = 'add-border';
+	const main_color = document.getElementById('main-color');
+	const colors = document.getElementsByClassName('bg-color-toggle');
+	
+	const findBorderClass = (className) => {
+		return className === 'add-border';
+	}
+	
+	const hideBorder = () => {
+		for(let j = 0; j < colors.length; j++){
+			const color = colors[j];
+			let { className } = color;
+			const classArr = className.split(' ');
+			const findClassNameIndex = classArr.findIndex(findBorderClass);
+			
+			if(findClassNameIndex !== -1){
+				classArr.splice(findClassNameIndex, 1);
+				color.className = classArr.join(' ');
+			}
+			
+		}
+	}
 	
 	for(let i = 0; i < colors.length; i++){
-		const color = colors[i]
-		const classArr = color.className.split(' ');
+		const color = colors[i];
+		let { className } = color;
+		const classArr = className.split(' ');
 		
-		console.log(classArr)
+		const addBorder = function(){
+			hideBorder();
+			const findClassNameIndex = classArr.findIndex(findBorderClass);
+			
+			if(findClassNameIndex !== -1){
+				classArr[findClassNameIndex] = borderClassName;
+				color.className = classArr.join(' ');
+				return false;
+			}
+			
+			classArr.push(borderClassName);
+			color.className = classArr.join(' ');
+		}
+		
+		color.addEventListener('click', addBorder)
 	}
 	
 }
