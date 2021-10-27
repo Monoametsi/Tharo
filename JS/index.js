@@ -58,9 +58,11 @@ const preloader = new preloaderObj();
 preloader.end_preloader();
 
 const bg_color_changer = () => {
+	const { body } = document;
 	const borderClassName = 'add-border';
 	const main_color = document.getElementById('main-color');
 	const colors = document.getElementsByClassName('bg-color-toggle');
+	const contactForm = document.getElementById('contact-form');
 	
 	const findBorderClass = (className) => {
 		return className === 'add-border';
@@ -76,6 +78,9 @@ const bg_color_changer = () => {
 			if(findClassNameIndex !== -1){
 				classArr.splice(findClassNameIndex, 1);
 				color.className = classArr.join(' ');
+				body.classList.remove(classArr[1]);
+				main_color.classList.remove(classArr[1]);
+				contactForm.classList.remove(classArr[1]);
 			}
 			
 		}
@@ -93,10 +98,16 @@ const bg_color_changer = () => {
 			if(findClassNameIndex !== -1){
 				classArr[findClassNameIndex] = borderClassName;
 				color.className = classArr.join(' ');
+				body.classList.add(classArr[1]);
+				main_color.classList.add(classArr[1]);
+				contactForm.classList.add(classArr[1]);
 				return false;
 			}
 			
 			classArr.push(borderClassName);
+			body.classList.add(classArr[1]);
+			main_color.classList.add(classArr[1]);
+			contactForm.classList.add(classArr[1]);
 			color.className = classArr.join(' ');
 		}
 		
