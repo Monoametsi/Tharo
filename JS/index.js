@@ -59,13 +59,43 @@ preloader.end_preloader();
 
 const bg_color_changer = () => {
 	const { body } = document;
+	const nav = document.getElementById('nav');
 	const borderClassName = 'add-border';
 	const main_color = document.getElementById('main-color');
 	const colors = document.getElementsByClassName('bg-color-toggle');
 	const contactForm = document.getElementById('contact-form');
+	const { parentElement } = colors[0];
 	
-	const findBorderClass = (className) => {
-		return className === 'add-border';
+	const logoChanger = (doesClassExist, elem) => {
+		const logo1 = elem.children[0];
+		const logo2 = elem.children[1];
+		
+		if(doesClassExist){
+			logo1.classList.add('hide-logo');
+			logo2.classList.remove('hide-logo');
+		}else{
+			logo1.classList.remove('hide-logo');
+			logo2.classList.add('hide-logo');
+		}
+	}
+	
+	const changeBodyColor = () => {
+		const doesClassExist = body.classList.contains('caramel') || body.classList.contains('green-ash') || body.classList.contains('light-bg-color ');
+		const headerLogo = document.getElementById('logo');
+		const navLogo = document.getElementById('dog-icon-cont');
+		
+		if(doesClassExist){
+			body.classList.add('light-bg-color');
+			nav.classList.add('light-bg-color');
+			main_color.classList.add('light-bg-color');
+		}else{
+			body.classList.remove('light-bg-color');
+			nav.classList.remove('light-bg-color');
+			main_color.classList.remove('light-bg-color');
+		}
+		
+		logoChanger(doesClassExist, headerLogo);
+		logoChanger(doesClassExist, navLogo);
 	}
 	
 	const hideBorder = () => {
@@ -73,16 +103,11 @@ const bg_color_changer = () => {
 			const color = colors[j];
 			let { className } = color;
 			const classArr = className.split(' ');
-			const findClassNameIndex = classArr.findIndex(findBorderClass);
-			
-			if(findClassNameIndex !== -1){
-				classArr.splice(findClassNameIndex, 1);
-				color.className = classArr.join(' ');
-				body.classList.remove(classArr[1]);
-				main_color.classList.remove(classArr[1]);
-				contactForm.classList.remove(classArr[1]);
-			}
-			
+			parentElement.classList.remove('light-bg-color');
+			color.classList.remove(borderClassName);
+			body.classList.remove(classArr[1]);
+			main_color.classList.remove(classArr[1]);
+			contactForm.classList.remove(classArr[1]);
 		}
 	}
 	
@@ -93,30 +118,23 @@ const bg_color_changer = () => {
 		
 		const addBorder = function(){
 			hideBorder();
-			const findClassNameIndex = classArr.findIndex(findBorderClass);
-			
-			if(findClassNameIndex !== -1){
-				classArr[findClassNameIndex] = borderClassName;
-				color.className = classArr.join(' ');
-				body.classList.add(classArr[1]);
-				main_color.classList.add(classArr[1]);
-				contactForm.classList.add(classArr[1]);
-				return false;
+			if(classArr[1] === 'caramel' || classArr[1] === 'green-ash'){
+				parentElement.classList.add('light-bg-color');
 			}
 			
-			classArr.push(borderClassName);
+			color.classList.add(borderClassName);
 			body.classList.add(classArr[1]);
 			main_color.classList.add(classArr[1]);
 			contactForm.classList.add(classArr[1]);
-			color.className = classArr.join(' ');
+			changeBodyColor();
 		}
 		
 		color.addEventListener('click', addBorder)
 	}
-	
 }
 
 bg_color_changer();
+
 /* let index = 0;
 
 const typeEffector = () => {

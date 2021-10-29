@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-US">
 <%-  include("partials/head-info") -%>
-<body class="hide-overflow change-bg">
+<body class="light-bg-color hide-overflow">
 	
 	<div class="preloader-cont" id="preloader-cont">
 		<div class="loader-cont">
@@ -13,33 +13,39 @@
 	<header id="header-cont">
 		
 		<div class="header-cont">
-		
-			<div class="header">
 			
+			<div class="header">
+				
 				<div class="logo-cont">
 					
-					<a href="/">
+					<a href="/" id="logo">
 						<!-- <img src="/Images/Tharo-icon.png" class="logo"> -->
-						<img src="/Images/Tharo.png" class="logo">
+						<img src="/Images/Tharo.png" class="logo hide-logo"> 
+						<img src="/Images/Tharo-icon.png" class="logo">
 					</a>
 					
 				</div>
 				
 				<div class="bg-color-toggle-cont">
-				
-					<div class="bg-color-toggle-main caramel" title="Theme-Switcher" id="main-color"></div>
 					
-					<div class="bg-color-toggle-bundle">
+					<div class="bg-color-toggle-main caramel light-bg-color" title="Theme-Switcher" id="main-color"></div>
+					
+					<div class="bg-color-toggle-bundle light-bg-color">
 						
 						<div class="bg-color-toggle caramel add-border" title="caramel"></div>
-						<div class="bg-color-toggle turquoise" title="turquoise"></div>
+						<!-- <div class="bg-color-toggle turquoise" title="turquoise"></div> -->
 						<div class="bg-color-toggle navy-blue" title="navy-blue"></div>
 						<div class="bg-color-toggle black" title="black"></div>
 						<div class="bg-color-toggle green-ash" title="green-ash"></div>
-						<div class="bg-color-toggle white" title="white"></div>
+						<!-- <div class="bg-color-toggle white" title="white"></div> -->
 						
 					</div>
-				
+					
+					<!-- <div class="">
+						<div class="">
+							
+						</div>
+					</div> -->
 				</div>
 			
 			</div>
@@ -49,13 +55,11 @@
 	</header>
 	
 	<aside id="nav-cont">
-		<nav id="nav" class="nav">
-		
+		<nav id="nav" class="nav light-bg-color">
 			<ul class="nav-list">
-			
+				
 				<li>
 					<a href="#home">
-					
 						<i class="fa fa-home"></i>
 						<h1>Home</h1>
 					</a>
@@ -63,18 +67,16 @@
 				
 				<li>
 					<a href="#about-tharo">
-						
-						<div class="dog-icon-cont">
-							<img src="/Images/Tharo.png" class="dog-icon">
+						<div class="dog-icon-cont" id="dog-icon-cont">
+							<img src="/Images/Tharo.png" class="dog-icon hide-logo">
+							<img src="/Images/Tharo-icon.png" class="dog-icon">
 						</div>
-						
 						<h1>About-Tharo</h1>
 					</a>
 				</li>
 				
 				<li>
 					<a href="#tharos-videos">
-					
 						<i class="fa fa-video"></i>
 						<h1>Videos</h1>
 					</a>
@@ -82,19 +84,15 @@
 				
 				<li>
 					<a href="#tharos-pictures">
-					
 						<i class="fa fa-camera"></i>
 						<h1>Pictures</h1>
-					
 					</a>
 				</li>
 				
 				<li>
 					<a href="#contact">
-					
 						<i class="fa fa-phone"></i>
 						<h1>Contact-Tharo</h1>
-					
 					</a>
 				</li>
 			
