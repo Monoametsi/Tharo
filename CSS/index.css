@@ -43,7 +43,7 @@ a{
 
 header{
 	display: initial;
-	z-index: 5;
+	z-index: 100;
 	position: fixed;
 	width: 100%;
 	top: 0;
@@ -87,6 +87,11 @@ header{
 	user-select: none;
 	max-width: 100%;
 	transition: 0.4s;
+}
+
+.logo, .dog-icon{
+	animation-name: smooth-in;
+	animation-duration: 0.4s;
 }
 
 .bg-color-toggle-cont{
@@ -195,6 +200,12 @@ header{
 	to{ opacity: 1; }
 }
 
+#nav-cont.dropdown, #nav-cont.remove-nav{
+	top: 50%;
+	animation-name: none;
+	animation-duration: 0.6s;
+}
+
 .nav-list{
 	display: flex;
 	flex-direction: column;
@@ -265,6 +276,57 @@ header{
 
 .hide-logo{
 	display: none;
+}
+
+.toggle-cont{
+	display: flex;
+	align-items: center;
+}
+
+.menu-toggle-cont{
+	display: none;
+	align-items: center;
+	justify-content: center;
+	padding-left: 1rem;
+}
+
+.menu-toggle{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	width: 35px;
+	height: 35px;
+	cursor: pointer;
+}
+
+.bar{
+	margin-bottom: 6px;
+	border: 2px solid #fff;
+	width: 100%;
+	transition: 0.4s;
+}
+
+.bar:last-child{
+	margin-bottom: 0;
+}
+
+.change-toggle > .menu-toggle > .one{
+	transform: rotate(135deg);
+	/* margin-top: 10px */;
+}
+
+.change-toggle > .menu-toggle > .two{
+	opacity: 0;
+}
+
+.change-toggle > .menu-toggle > .three{
+	transform: rotate(-135deg);
+	margin-top: -20px;
+}
+
+.light-bg-color > .menu-toggle > .bar{
+	border: 2px solid #000;
 }
 
 #home, #about-tharo{
@@ -720,7 +782,7 @@ footer{
 	left: 0;
 	bottom: 0;
 	top: 0;
-	z-index: 50;
+	z-index: 100000;
 	background-color: rgba(0,0,0,0.9);
 	/* background-color: rgba(190,101,38,0.6); */
 }
@@ -839,11 +901,13 @@ footer{
 	position: absolute;
 	top: 2rem;
 	left: 2rem;
+	color: #fff;
 }
 
 .img-counter > span{
 	font-size: 1.5rem;
 	font-weight: bold;
+	color: #fff;
 }
 
 /* Picture-Collage-End */
@@ -1088,6 +1152,10 @@ footer{
 	animation-name: loader-glow;
 	animation-duration: 1.5s;
 	animation-iteration-count: infinite;
+}
+
+.loader-cont > h1{
+	color: #fff;
 }
 
 @keyframes loader-glow{

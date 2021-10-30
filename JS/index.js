@@ -60,11 +60,32 @@ preloader.end_preloader();
 const bg_color_changer = () => {
 	const { body } = document;
 	const nav = document.getElementById('nav');
+	const navCont = nav.parentElement;
 	const borderClassName = 'add-border';
 	const main_color = document.getElementById('main-color');
 	const colors = document.getElementsByClassName('bg-color-toggle');
 	const contactForm = document.getElementById('contact-form');
 	const { parentElement } = colors[0];
+	const { nextElementSibling } = parentElement.parentElement;
+	
+	const menuToggler = () => {
+		nextElementSibling.classList.toggle('change-toggle');
+		const checkIfClassExists = nextElementSibling.classList.contains('change-toggle');
+		
+		if(checkIfClassExists){
+			isOpen = true;
+			hideOverflow();
+			navCont.classList.add('dropdown')
+		}else{
+			navCont.classList.add('remove-nav');
+			setTimeout(() => {
+				isOpen = false;
+				hideOverflow();
+				/* navCont.style.display = 'none'; */
+				navCont.classList.remove('remove-nav', 'dropdown');
+			}, 600)
+		}
+	}
 	
 	const logoChanger = (doesClassExist, elem) => {
 		const logo1 = elem.children[0];
@@ -103,6 +124,7 @@ const bg_color_changer = () => {
 			const color = colors[j];
 			let { className } = color;
 			const classArr = className.split(' ');
+			nextElementSibling.classList.remove('light-bg-color');
 			parentElement.classList.remove('light-bg-color');
 			color.classList.remove(borderClassName);
 			body.classList.remove(classArr[1]);
@@ -120,6 +142,7 @@ const bg_color_changer = () => {
 			hideBorder();
 			if(classArr[1] === 'caramel' || classArr[1] === 'green-ash'){
 				parentElement.classList.add('light-bg-color');
+				nextElementSibling.classList.add('light-bg-color');
 			}
 			
 			color.classList.add(borderClassName);
@@ -131,9 +154,15 @@ const bg_color_changer = () => {
 		
 		color.addEventListener('click', addBorder)
 	}
+	
+	nextElementSibling.addEventListener('click', menuToggler);
 }
 
 bg_color_changer();
+
+/* const bookmarker = () => {
+	
+} */
 
 /* let index = 0;
 
