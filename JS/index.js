@@ -173,7 +173,7 @@ const smoothBookMarker = () => {
 		const section = sections[i];
 		const sectionName = section.id;
 		const sectionOffsetTop = section.offsetTop;
-		console.log(section);
+		
 		/* sectionScroller */
 		navLink.onclick = function(event){
 			event.preventDefault();
@@ -182,12 +182,26 @@ const smoothBookMarker = () => {
 			function scrollMover(){
 				
 				if(html.scrollTop !== sectionOffsetTop || body.scrollTop !== sectionOffsetTop){
-					if(html.scrollTop > sectionOffsetTop){
-						html.scrollTop = sectionOffsetTop;
-						count = 0;
-						clearInterval(moveScroll);
+					if(html.scrollTop < sectionOffsetTop){
+						scrollBy(0, count++);
+						if(html.scrollTop > sectionOffsetTop){
+							html.scrollTop = sectionOffsetTop;
+						}
+						
 					}
-					scrollBy(0, count++);
+					
+					if(html.scrollTop > sectionOffsetTop){
+						scrollBy(0, count--);
+						if(html.scrollTop < sectionOffsetTop){
+							html.scrollTop = sectionOffsetTop;
+						}
+					}
+					
+					if(html.scrollTop === sectionOffsetTop){
+						clearInterval(moveScroll);
+						count = 0;
+					}
+					
 				}else if(html.scrollTop === sectionOffsetTop || body.scrollTop === sectionOffsetTop){
 					//console.log('Stop')
 					clearInterval(moveScroll);
@@ -196,9 +210,7 @@ const smoothBookMarker = () => {
 				
 				console.log(`${html.scrollTop} : ${sectionOffsetTop}`);
 			}
-			
-			
-			
+						
 		}
 	}
 }
