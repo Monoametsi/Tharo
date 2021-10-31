@@ -27,6 +27,7 @@ const preloaderObj = function(){
 		const html = document.documentElement;
 		
 		const endPreloader = () => {
+			
 			preloaderCont.classList.add('slow-out');
 			setTimeout(() => {
 				/* isOpen = false; */
@@ -159,9 +160,50 @@ const bg_color_changer = () => {
 
 bg_color_changer();
 
-/* const bookmarker = () => {
+const smoothBookMarker = () => {
+	let count = 0;
+	const body = document.querySelector('body');
+	const html = document.querySelector('html');
+	const navLinks = document.querySelectorAll('.link');
+	const sections = document.querySelectorAll('section');
 	
-} */
+	for(let i = 0; i < navLinks.length; i++){
+		const navLink = navLinks[i];
+		const navLinkName = navLink.hash.replace('#', '');
+		const section = sections[i];
+		const sectionName = section.id;
+		const sectionOffsetTop = section.offsetTop;
+		console.log(section);
+		/* sectionScroller */
+		navLink.onclick = function(event){
+			event.preventDefault();
+			const moveScroll = setInterval(scrollMover, 30);
+			
+			function scrollMover(){
+				
+				if(html.scrollTop !== sectionOffsetTop || body.scrollTop !== sectionOffsetTop){
+					if(html.scrollTop > sectionOffsetTop){
+						html.scrollTop = sectionOffsetTop;
+						count = 0;
+						clearInterval(moveScroll);
+					}
+					scrollBy(0, count++);
+				}else if(html.scrollTop === sectionOffsetTop || body.scrollTop === sectionOffsetTop){
+					//console.log('Stop')
+					clearInterval(moveScroll);
+					count = 0;
+				}
+				
+				console.log(`${html.scrollTop} : ${sectionOffsetTop}`);
+			}
+			
+			
+			
+		}
+	}
+}
+
+window.addEventListener('load', smoothBookMarker)
 
 /* let index = 0;
 

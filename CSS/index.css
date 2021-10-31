@@ -15,6 +15,11 @@
 	background-color: #BE6526;
 }
 
+html{
+	margin: 0;
+	padding: 0;
+}
+
 body{
 	transition: 0.4s;
 	margin: 0;
@@ -337,11 +342,11 @@ header{
 
 #tharos-videos{
 	display: flex;
-	/* height: 100vh; */
 	flex-direction: column;
 }
 
-#tharos-pictures, #tharos-videos, #contact, footer{
+#tharos-pictures, #tharos-videos, #contact{
+	position: relative;
 	margin-top: 4rem;
 }
 
