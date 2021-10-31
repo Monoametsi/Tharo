@@ -81,7 +81,6 @@ const bg_color_changer = () => {
 			setTimeout(() => {
 				isOpen = false;
 				hideOverflow();
-				/* navCont.style.display = 'none'; */
 				navCont.classList.remove('remove-nav', 'dropdown');
 			}, 600)
 		}
