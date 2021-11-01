@@ -95,6 +95,20 @@
 	}
 }
 
+@media screen and (max-width: 722px){
+	.home-page-vid{
+		display: none;
+	}
+	
+	#home{
+		background-position: center center;
+		background-repeat: no-repeat;
+		background-attachment: fixed;
+		background-size: cover;
+		background-image: linear-gradient(to left, rgba(0,0,0,0.1), rgba(0,0,0,0.1)), url('/Images/mobilet.jpg');
+	}
+}
+
 @media screen and (max-width: 700px){
 	.inputField-group-cont{
 		flex-direction: column;

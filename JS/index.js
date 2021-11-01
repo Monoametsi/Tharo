@@ -175,7 +175,7 @@ const smoothBookMarker = () => {
 		const sectionOffsetTop = section.offsetTop;
 		
 		/* sectionScroller */
-		navLink.onclick = function(event){
+		const sectionScroller = function(event){
 			event.preventDefault();
 			const moveScroll = setInterval(scrollMover, 30);
 			
@@ -203,15 +203,15 @@ const smoothBookMarker = () => {
 					}
 					
 				}else if(html.scrollTop === sectionOffsetTop || body.scrollTop === sectionOffsetTop){
-					//console.log('Stop')
 					clearInterval(moveScroll);
 					count = 0;
 				}
 				
-				console.log(`${html.scrollTop} : ${sectionOffsetTop}`);
 			}
 						
 		}
+		
+		navLink.addEventListener('click', sectionScroller)
 	}
 }
 
@@ -257,22 +257,6 @@ const abtUsVidStyling = function(){
 }
 
 abtUsVid.addEventListener('ended', abtUsVidStyling) */
-
-/* const sections = document.getElementsByTagName('section')[0];
-const homeVid = document.getElementById("home-page-vid");
-const vidCont = document.getElementById("vid-cont");
-const getWidth = sections.getBoundingClientRect();
-
-window.onresize = () => {
-	const getWidth = sections.getBoundingClientRect();
-	vidCont.style.width = getWidth.width + 'px';
-	vidCont.style.height = getWidth.height + 'px';
-	homeVid.style.width = getWidth.width + 'px';
-	homeVid.style.height = getWidth.height + 'px';
-}
-
-homeVid.style.width = getWidth.width + 'px';
-homeVid.style.height = getWidth.height + 'px'; */
 
 const videos = document.getElementsByClassName('video-player-cont');
 const dots = document.getElementsByClassName('dot-cont');
