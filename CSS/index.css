@@ -15,6 +15,10 @@
 	background-color: #BE6526;
 }
 
+html {
+    scroll-behavior: smooth !important;
+}
+
 body{
 	transition: 0.4s;
 	margin: 0;

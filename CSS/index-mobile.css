@@ -96,16 +96,21 @@
 }
 
 @media screen and (max-width: 722px){
-	.home-page-vid{
+	.home-page-vid, .abt-us-page-vid{
 		display: none;
 	}
 	
-	#home{
+	#home, #about-tharo{
 		background-position: center center;
 		background-repeat: no-repeat;
 		background-attachment: fixed;
 		background-size: cover;
 		background-image: linear-gradient(to left, rgba(0,0,0,0.1), rgba(0,0,0,0.1)), url('/Images/mobilet.jpg');
+	}
+	
+	#about-tharo{
+		background-position: left;
+		background-image: linear-gradient(to left, rgba(0,0,0,0.1), rgba(0,0,0,0.1)), url('/Images/about-us-vid_mobile.jpg');
 	}
 }
 

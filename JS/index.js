@@ -161,54 +161,18 @@ const bg_color_changer = () => {
 bg_color_changer();
 
 const smoothBookMarker = () => {
-	let count = 0;
-	const body = document.querySelector('body');
-	const html = document.querySelector('html');
 	const navLinks = document.querySelectorAll('.link');
-	const sections = document.querySelectorAll('section');
 	
 	for(let i = 0; i < navLinks.length; i++){
 		const navLink = navLinks[i];
-		const navLinkName = navLink.hash.replace('#', '');
-		const section = sections[i];
-		const sectionName = section.id;
-		const sectionOffsetTop = section.offsetTop;
+		const navLinkName = navLink.hash;
 		
-		/* sectionScroller */
 		const sectionScroller = function(event){
 			event.preventDefault();
-			const moveScroll = setInterval(scrollMover, 30);
 			
-			function scrollMover(){
-				
-				if(html.scrollTop !== sectionOffsetTop || body.scrollTop !== sectionOffsetTop){
-					if(html.scrollTop < sectionOffsetTop){
-						scrollBy(0, count++);
-						if(html.scrollTop > sectionOffsetTop){
-							html.scrollTop = sectionOffsetTop;
-						}
-						
-					}
-					
-					if(html.scrollTop > sectionOffsetTop){
-						scrollBy(0, count--);
-						if(html.scrollTop < sectionOffsetTop){
-							html.scrollTop = sectionOffsetTop;
-						}
-					}
-					
-					if(html.scrollTop === sectionOffsetTop){
-						clearInterval(moveScroll);
-						count = 0;
-					}
-					
-				}else if(html.scrollTop === sectionOffsetTop || body.scrollTop === sectionOffsetTop){
-					clearInterval(moveScroll);
-					count = 0;
-				}
-				
-			}
-						
+			document.querySelector(navLinkName).scrollIntoView({
+				behavior: 'smooth'
+			});
 		}
 		
 		navLink.addEventListener('click', sectionScroller)
@@ -216,6 +180,16 @@ const smoothBookMarker = () => {
 }
 
 window.addEventListener('load', smoothBookMarker)
+
+/* document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+            behavior: 'smooth'
+        });
+    });
+}); */
 
 /* let index = 0;
 
