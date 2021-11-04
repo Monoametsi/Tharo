@@ -1,11 +1,6 @@
 let dateFormater = (time, timeType) => {
     
-	if(time === 1){
-	  return `${ time } ${ timeType } old `
-	}else{
-	  return `${ time } ${ timeType }s old`
-	}
-	
+	return `${ time }-${ timeType }-old`
 }
 
 let displayLaspedTime = (postDate) => {

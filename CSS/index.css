@@ -15,7 +15,7 @@
 	background-color: #BE6526;
 }
 
-html {
+html{
     scroll-behavior: smooth !important;
 }
 
@@ -29,8 +29,7 @@ body{
 	background-repeat: no-repeat;
 	background-attachment: fixed;
 	background-size: cover;
-/* 	background-image: linear-gradient(to left, rgba(0,0,0,0.1), rgba(0,0,0,0.1)), url('/Images/ty.png')
- */	background-image: url('/Images/ty.png');
+	background-image: url('/Images/ty.png');
 }
 
 body.light-bg-color{
@@ -362,11 +361,11 @@ footer{
 	object-fit: fill;
 }
 
-/* .home-page-vid{
+.home-page-vid{
 	filter: brightness(40%);
-	animation-name: smooth-vid-in;
-	animation-duration: 10s;
-} */
+	/* animation-name: smooth-vid-in;
+	animation-duration: 10s; */
+}
 
 @keyframes smooth-vid-in{
 	from{ filter: brightness(100%); }
@@ -379,6 +378,10 @@ footer{
 	position: absolute;
 	max-width: 100%;
 	/* background-color: red; */
+}
+
+.about-us-video-title-cont{
+	display: flex;
 }
 
 .about-us-video-title-cont{
@@ -413,6 +416,7 @@ footer{
 	left: 25%;
 	transform: translate(-50%, -50%);
 	width: 37%;
+	max-width: 100%;
 	animation-name: slide-up;
 	animation-duration: 2s;
 	opacity: 1;
@@ -482,6 +486,7 @@ footer{
 }
 
 .tharo-intro p, .about-us-descript-cont p{
+	color: #fff;
 	margin: 0;
 	font-weight: 600;
 	font-size: 1.2rem;
@@ -614,21 +619,6 @@ footer{
 	display: inline-flex;
 	margin: 6px;
 }
-
-/* .dots{
-	cursor: pointer;
-	height: 1rem;
-	width: 1rem;
-	border: 1px solid #fff;
-	border-radius: 100%;
-	transition: 0.3s;
-}
-
-.dot-background{
-	background-color: #fff;
-	height: 1.2rem;
-	width: 1.2rem;
-} */
 
 .dot-cont{
 	display: inline-flex;

@@ -51,6 +51,8 @@ const preloaderObj = function(){
 		/* homeVid.addEventListener('play', endPreloader); */
 		window.addEventListener('load', endPreloader);
 	}
+	
+	this.end_preloader.hi = 'hi';
 }
 
 const preloader = new preloaderObj();
@@ -179,32 +181,68 @@ const smoothBookMarker = () => {
 	}
 }
 
-window.addEventListener('load', smoothBookMarker)
+window.addEventListener('load', smoothBookMarker);
 
-/* document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-            behavior: 'smooth'
-        });
-    });
-}); */
-
-/* let index = 0;
-
-const typeEffector = () => {
-	const typeElem = document.getElementById("intro-msg");
-	const typeMsg = `Hi there! Lovely to meet you, my name is Tharo, and am looking for a place to call home, 
-				  lets take a trip down this page so I that can tell you a little about myself.`;
+const vid_elem_displayer = function() {
+	let index = 0;
+	const homeVid = document.getElementById("home-page-vid");
+	const abtUsVid = document.getElementById("abt-us-page-vid");
+	const vidTitle = document.getElementById("video-title-cont");
+	const abtUsTitle = document.getElementById("about-us-video-title-cont");
+	const nav = document.getElementById("nav-cont");
+	const header = document.getElementById("header-cont");
 	
-	if(index < typeMsg.length){
-		typeElem.innerHTML += typeMsg.charAt(index);
-    }
+	this.typeEffectCreator = function(){
+		const typeEffectorGroupFunc = () => {
+			const typeEffectInterval = setInterval(typeEffect, 60);
+			
+			function typeEffect(){
+				const typeElem = document.getElementById("intro-msg");
+				const typeMsg = `Hi there! Lovely to meet you, my name is Tharo, and am looking for a place to call home, 
+				lets take a trip down this page so I that can tell you a little about myself.`;
+				
+				if(index < typeMsg.length){
+					typeElem.innerHTML += typeMsg.charAt(index);
+				}else{
+					clearInterval(typeEffectInterval);
+				}
+				
+				index++;
+				//console.log(index);
+			}
+		}
+		
+		setTimeout(typeEffectorGroupFunc, 2100);
+	}
 	
-    index++;
-    setTimeout(typeEffector, 50);
+	this.homeVidStyling = function() {
+		const addVidStyling = function(){
+			if(this.ended){
+				header.style.display = 'initial';
+				nav.style.display = 'flex';
+				vidTitle.style.display = 'flex';
+				this.typeEffectCreator();
+			}
+		}
+		
+		homeVid.addEventListener('ended', addVidStyling);
+	}
+	
+	this.abtUsVidStyling = function(){
+		const addVidStyling = function(){
+			if(this.ended){
+				abtUsTitle.style.display = 'flex';
+			}
+		}
+		
+		abtUsVid.addEventListener('ended', addVidStyling);
+	}
 }
+
+const vidElemDisplayer = new vid_elem_displayer();
+/* window.addEventListener('load', vidElemDisplayer.typeEffectCreator); */
+
+/*
 
 const homeVid = document.getElementById("home-page-vid");
 const abtUsVid = document.getElementById("abt-us-page-vid");

@@ -1,4 +1,4 @@
-@media screen and (max-width: 1110px){	
+@media screen and (max-width: 1110px){
 	.menu-toggle-cont{
 		display: flex;
 	}
@@ -79,13 +79,45 @@
 		color: #fff;
 	}
 	
-	/* .light-bg-color > .nav-list li:hover > a{
-		color: red;
-	} */
-	
 	.dog-icon-cont{
 		max-width: 5.8rem;
 		padding-right: 8px;
+	}
+	
+	.video-title-cont{
+		top: 45%;
+		left: 22%;
+		/* transform: translate(-50%, -50%); */
+		width: 40%;
+	}
+	
+	.about-us-cont{
+		width: 80%;
+	}
+	
+	/* @keyframes slide-up{
+		0%{ transform: translate(-50%, 0); opacity: 0; }
+		50%{ transform: translate(-50%, 0); opacity: 0; }
+		100%{ transform: translate(-50%, -50%); opacity: 1; }
+	} */
+}
+
+@media screen and (max-width: 980px){
+	.video-title{
+		font-size: 5rem;
+	}
+	
+	.video-title-img-cont{
+		display: flex;
+		width: 90px;
+	}
+}
+	
+@media screen and (max-width: 810px){
+	.video-title-cont{
+		top: 45%;
+		left: 30%;
+		width: 50%;
 	}
 }
 
@@ -105,7 +137,7 @@
 		background-repeat: no-repeat;
 		background-attachment: fixed;
 		background-size: cover;
-		background-image: linear-gradient(to left, rgba(0,0,0,0.1), rgba(0,0,0,0.1)), url('/Images/mobilet.jpg');
+		background-image: linear-gradient(to left, rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('/Images/mobilet.jpg');
 	}
 	
 	#about-tharo{
@@ -130,6 +162,16 @@
 }
 
 @media screen and (max-width: 680px){
+	.header-cont{
+		padding: 1rem;
+	}
+	
+	.video-title-cont{
+		padding: 1rem;
+		left: 35%;
+		width: 70%;
+	}
+	
 	.dog-icon-cont{
 		max-width: 4.8rem;
 		padding-right: 8px;
@@ -177,6 +219,20 @@
 }
 
 @media screen and (max-width: 580px){
+	.video-title-cont{
+		top: 50%;
+		left: 50%;
+		width: 100%;
+	}
+	
+	.video-title{
+		font-size: 4rem;
+	}
+	
+	.video-title-img-cont{
+		width: 80px;
+	}
+	
 	.pic-cont, .pic{
 		width: 100%;
 	}
@@ -190,6 +246,10 @@
 }
 
 @media screen and (max-width: 490px){
+	.tharo-intro p{
+		font-size: 1rem;
+	}
+	
 	.dog-icon-cont{
 		max-width: 3.8rem;
 		padding-right: 8px;
@@ -241,6 +301,14 @@
 }
 
 @media screen and (max-width: 340px){
+	.video-title{
+		font-size: 3.5rem;
+	}
+	
+	.video-title-img-cont{
+		width: 60px;
+	}
+	
 	.dog-icon-cont{
 		max-width: 3rem;
 		padding-right: 8px;
