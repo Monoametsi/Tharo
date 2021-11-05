@@ -45,7 +45,7 @@ a{
 }
 
 header{
-	display: initial;
+	display: none;
 	z-index: 100;
 	position: fixed;
 	width: 100%;
@@ -187,7 +187,7 @@ header{
 }
 
 #nav-cont{
-	display: flex;
+	display: none;
 	z-index: 5;
 	position: fixed;
 	top: 50%;
@@ -363,13 +363,13 @@ footer{
 
 .home-page-vid{
 	filter: brightness(40%);
-	/* animation-name: smooth-vid-in;
-	animation-duration: 10s; */
+	animation-name: smooth-vid-in;
+	animation-duration: 10s;
 }
 
 @keyframes smooth-vid-in{
 	from{ filter: brightness(100%); }
-	to{ filter: brightness(40%);}
+	to{ filter: brightness(40%); }
 }
 
 .video-title-cont, .about-us-video-title-cont{

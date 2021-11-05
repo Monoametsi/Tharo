@@ -216,59 +216,64 @@ const vid_elem_displayer = function() {
 	}
 	
 	this.homeVidStyling = function() {
-		const addVidStyling = function(){
-			if(this.ended){
-				header.style.display = 'initial';
-				nav.style.display = 'flex';
-				vidTitle.style.display = 'flex';
-				this.typeEffectCreator();
-			}
+		this.displayVidElem = function() {
+			header.style.display = 'initial';
+			nav.style.display = 'flex';
+			vidTitle.style.display = 'flex';
+			vidElemDisplayer.typeEffectCreator();
 		}
 		
-		homeVid.addEventListener('ended', addVidStyling);
+		this.addVidStyling = function(){
+			const vidElemDisplayer = new vid_elem_displayer();
+			const homeVidStyler = new vidElemDisplayer.homeVidStyling();
+			homeVid.addEventListener('ended', homeVidStyler.displayVidElem);
+		}
 	}
 	
 	this.abtUsVidStyling = function(){
-		const addVidStyling = function(){
-			if(this.ended){
-				abtUsTitle.style.display = 'flex';
-			}
+		this.displayVidElem = function() {
+			abtUsTitle.style.display = 'flex';
 		}
 		
-		abtUsVid.addEventListener('ended', addVidStyling);
+		this.addVidStyling = function(){
+			const vidElemDisplayer = new vid_elem_displayer();
+			const abtUsVidStyler = new vidElemDisplayer.abtUsVidStyling();
+			abtUsVid.addEventListener('ended', abtUsVidStyler.displayVidElem);
+		}
+	}
+	
+	this.elemDisplayer = function(){
+		const homeVidStyler = new this.homeVidStyling();
+		const abtUsVidStyler = new this.abtUsVidStyling();
+		
+		if(window.getComputedStyle(homeVid, null).display !== "none"){
+			homeVidStyler.addVidStyling();
+		}else{
+			if(document.readyState === 'complete'){
+				homeVidStyler.displayVidElem();
+			}else{
+				window.addEventListener('load', homeVidStyler.displayVidElem)
+			}
+			
+		}
+		
+		/* if(window.getComputedStyle(abtUsVid, null).display !== "none"){
+			abtUsVidStyler.abtUsVidStyling();
+		}else{
+			abtUsVidStyler.displayVidElem();
+		} */
+	
 	}
 }
 
 const vidElemDisplayer = new vid_elem_displayer();
-/* window.addEventListener('load', vidElemDisplayer.typeEffectCreator); */
+vidElemDisplayer.elemDisplayer();
 
-/*
-
-const homeVid = document.getElementById("home-page-vid");
-const abtUsVid = document.getElementById("abt-us-page-vid");
-const vidTitle = document.getElementById("video-title-cont");
-const abtUsTitle = document.getElementById("about-us-video-title-cont");
-const nav = document.getElementById("nav-cont");
-const header = document.getElementById("header-cont");
-
-const homeVidStyling = function(){
-	if(this.ended){
-		header.style.display = 'initial';
-		nav.style.display = 'flex';
-		vidTitle.style.display = 'flex';
-		setTimeout(typeEffector, 2100);
+window.addEventListener('resize', () => { 
+	if(document.readyState === 'complete'){
+		window.addEventListener('resize', () => { vidElemDisplayer.elemDisplayer() })
 	}
-}
-
-homeVid.addEventListener('ended', homeVidStyling)
-
-const abtUsVidStyling = function(){
-	if(this.ended){
-		abtUsTitle.style.display = 'flex';
-	}
-}
-
-abtUsVid.addEventListener('ended', abtUsVidStyling) */
+})
 
 const videos = document.getElementsByClassName('video-player-cont');
 const dots = document.getElementsByClassName('dot-cont');

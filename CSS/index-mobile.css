@@ -4,7 +4,6 @@
 	}
 	
 	#nav-cont{
-		display: flex;
 		align-items: center;
 		justify-content: center;
 		width: 100%;
@@ -92,8 +91,12 @@
 	}
 	
 	.about-us-cont{
-		width: 80%;
+		width: 90%;
 	}
+	
+	/* .about-us-video-title-cont{
+		left: 50%;
+	} */
 	
 	/* @keyframes slide-up{
 		0%{ transform: translate(-50%, 0); opacity: 0; }
@@ -132,6 +135,16 @@
 		display: none;
 	}
 	
+	.about-us-title-cont{
+		font-size: 2.5rem;
+		padding-bottom: 8px;
+	}
+	
+	.about-us-title-cont > h1{
+		line-height: 4rem;
+		margin: 0;
+	}
+	
 	#home, #about-tharo{
 		background-position: center center;
 		background-repeat: no-repeat;
@@ -142,7 +155,32 @@
 	
 	#about-tharo{
 		background-position: left;
-		background-image: linear-gradient(to left, rgba(0,0,0,0.1), rgba(0,0,0,0.1)), url('/Images/about-us-vid_mobile.jpg');
+		background-image: url('/Images/about-us-vid_mobile.jpg');
+		/* background-image: linear-gradient(to left, rgba(0,0,0,0.1), rgba(0,0,0,0.1)), url('/Images/about-us-vid_mobile.jpg'); */
+	}
+	
+	.about-us-cont{
+		padding: 1rem;
+		width: 100%;
+		margin-left: 0;
+	}
+	
+	.about-us-video-title-cont{
+		align-items: center;
+		justify-content: center;
+	}
+	
+	.about-us-video-title-cont{
+		top: 0;
+		bottom: 0;
+		transform: translate(0, 0);
+		left: 0;
+		width: 100%;
+	}
+	
+	@keyframes slide-from-right{
+		from{ left: 100%; opacity: 0; }
+		to{ left: 0; opacity: 1;}
 	}
 }
 
@@ -319,6 +357,15 @@
 	}
 	
 	.nav-list li > a > i{
+		font-size: 2rem;
+	}
+	
+	.about-us-video-title-cont{
+		top: 0;
+		bottom: 0;
+	}
+	
+	.about-us-title-cont{
 		font-size: 2rem;
 	}
 }
