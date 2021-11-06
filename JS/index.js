@@ -27,32 +27,20 @@ const preloaderObj = function(){
 		const html = document.documentElement;
 		
 		const endPreloader = () => {
-			
+			html.scrollTop = body.scrollTop = 0;
 			preloaderCont.classList.add('slow-out');
 			setTimeout(() => {
 				/* isOpen = false; */
 				hideOverflow();
 				preloaderCont.style.display = 'none';
-				/* html.scrollTop = body.scrollTop = 0; */
 			}, 300);
 		}
 		
-		/* setTimeout(() => {
+		homeVid.addEventListener('play', endPreloader);
+		window.addEventListener('load', () => {
 			html.scrollTop = body.scrollTop = 0;
-			homeVid.addEventListener('play', () => {
-				preloaderCont.classList.add('slow-out');
-				setTimeout(() => {
-					preloaderCont.style.display = 'none';
-				},300)
-				
-			});
-		}, 0); */
-		
-		/* homeVid.addEventListener('play', endPreloader); */
-		window.addEventListener('load', endPreloader);
+		});
 	}
-	
-	this.end_preloader.hi = 'hi';
 }
 
 const preloader = new preloaderObj();

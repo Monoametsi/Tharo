@@ -799,7 +799,7 @@ footer{
 
 .slow-out{
 	animation-name: slow-out;
-	animation-duration: 0.6s;
+	animation-duration: 0.3s;
 }
 
 @keyframes slow-out{
