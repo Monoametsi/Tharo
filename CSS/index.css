@@ -361,10 +361,16 @@ footer{
 	object-fit: fill;
 }
 
-.home-page-vid{
+/* .home-page-vid{
 	filter: brightness(40%);
 	animation-name: smooth-vid-in;
 	animation-duration: 10s;
+} */
+
+.add-filter{
+	filter: brightness(40%);
+	animation-name: smooth-vid-in;
+	animation-duration: 4s;
 }
 
 @keyframes smooth-vid-in{
@@ -379,10 +385,10 @@ footer{
 	max-width: 100%;
 	/* background-color: red; */
 }
-
+/* 
 .about-us-video-title-cont{
 	display: flex;
-}
+} */
 
 .about-us-video-title-cont{
 	/* display: none; */

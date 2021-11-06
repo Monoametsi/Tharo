@@ -208,7 +208,6 @@ const vid_elem_displayer = function() {
 				}
 				
 				index++;
-				//console.log(index);
 			}
 		}
 		
@@ -217,6 +216,7 @@ const vid_elem_displayer = function() {
 	
 	this.homeVidStyling = function() {
 		this.displayVidElem = function() {
+			homeVid.classList.add('add-filter');
 			header.style.display = 'initial';
 			nav.style.display = 'flex';
 			vidTitle.style.display = 'flex';
@@ -257,12 +257,15 @@ const vid_elem_displayer = function() {
 			
 		}
 		
-		/* if(window.getComputedStyle(abtUsVid, null).display !== "none"){
-			abtUsVidStyler.abtUsVidStyling();
+		if(window.getComputedStyle(abtUsVid, null).display !== "none"){
+			abtUsVidStyler.addVidStyling();
 		}else{
-			abtUsVidStyler.displayVidElem();
-		} */
-	
+			if(document.readyState === 'complete'){
+				abtUsVidStyler.displayVidElem();
+			}else{
+				window.addEventListener('load', abtUsVidStyler.displayVidElem);
+			}
+		}
 	}
 }
 
@@ -271,9 +274,11 @@ vidElemDisplayer.elemDisplayer();
 
 window.addEventListener('resize', () => { 
 	if(document.readyState === 'complete'){
-		window.addEventListener('resize', () => { vidElemDisplayer.elemDisplayer() })
+		window.addEventListener('resize', () => { 
+			vidElemDisplayer.elemDisplayer() 
+		});
 	}
-})
+});
 
 const videos = document.getElementsByClassName('video-player-cont');
 const dots = document.getElementsByClassName('dot-cont');
