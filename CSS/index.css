@@ -385,13 +385,8 @@ footer{
 	max-width: 100%;
 	/* background-color: red; */
 }
-/* 
-.about-us-video-title-cont{
-	display: flex;
-} */
 
 .about-us-video-title-cont{
-	/* display: none; */
 	top: 50%;
 	left: 50%;
 	transform: translate(-16.5%, -50%);
@@ -401,7 +396,7 @@ footer{
 	background-color: rgba(0, 0, 0, 0.9);
 	overflow: hidden;
 	animation-name: slide-from-right;
-	animation-duration: 3s;
+	animation-duration: 1.5s;
 	opacity: 1;
 }
 
@@ -799,7 +794,7 @@ footer{
 
 .slow-out{
 	animation-name: slow-out;
-	animation-duration: 0.3s;
+	animation-duration: 0.8s;
 }
 
 @keyframes slow-out{

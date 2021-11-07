@@ -36,10 +36,14 @@ const preloaderObj = function(){
 			}, 300);
 		}
 		
-		homeVid.addEventListener('play', endPreloader);
-		window.addEventListener('load', () => {
-			html.scrollTop = body.scrollTop = 0;
-		});
+		if(window.getComputedStyle(homeVid, null).display !== 'none'){
+			homeVid.addEventListener('play', endPreloader);
+			window.addEventListener('load', () => {
+				html.scrollTop = body.scrollTop = 0;
+			});
+		}else{
+			window.addEventListener('load', endPreloader);
+		}
 	}
 }
 
