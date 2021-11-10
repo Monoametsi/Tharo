@@ -150,12 +150,12 @@
 		background-repeat: no-repeat;
 		background-attachment: fixed;
 		background-size: cover;
-		background-image: linear-gradient(to left, rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('/Images/mobilet.jpg');
+		background-image: linear-gradient(to left, rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('/media/Images/home-vid-mobile-pic.jpg');
 	}
 	
 	#about-tharo{
 		background-position: left;
-		background-image: url('/Images/about-us-vid_mobile.jpg');
+		background-image: url('/media/Images/about-us-vid_mobile.jpg');
 		/* background-image: linear-gradient(to left, rgba(0,0,0,0.1), rgba(0,0,0,0.1)), url('/Images/about-us-vid_mobile.jpg'); */
 	}
 	

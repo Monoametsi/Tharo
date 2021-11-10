@@ -29,7 +29,7 @@ body{
 	background-repeat: no-repeat;
 	background-attachment: fixed;
 	background-size: cover;
-	background-image: url('/Images/ty.png');
+	background-image: url('/media/Images/Dog-accessories.png');
 }
 
 body.light-bg-color{

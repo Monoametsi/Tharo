@@ -30,7 +30,6 @@ const preloaderObj = function(){
 			html.scrollTop = body.scrollTop = 0;
 			preloaderCont.classList.add('slow-out');
 			setTimeout(() => {
-				/* isOpen = false; */
 				hideOverflow();
 				preloaderCont.style.display = 'none';
 			}, 300);
