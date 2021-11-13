@@ -656,6 +656,10 @@ footer{
 	padding: 0;
 }
 
+.dots-list-cont{
+	flex-wrap: wrap;
+}
+
 .video-player-cont{
 	display: flex;
     flex-direction: column;

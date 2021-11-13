@@ -36,7 +36,12 @@ app.get('/submission-failure', (req, res) => {
 });
 
 const PORT = process.env.PORT;
+const db_url = process.env.DATABASE;
 
-app.listen(PORT, () => {
-	console.log(`Live at port ${PORT}`);
+mongoose.connect(db_url, { useNewUrlParser: true, useUnifiedTopology: true }).then((result) => {
+	app.listen(PORT, () => {
+		console.log(`Live at port ${PORT}`);
+	})
+}).catch((err) => {
+	console.log(err);
 })
