@@ -1,0 +1,26 @@
+@media screen and (max-width: 500px){
+	.card-cont{
+		padding: 1rem;
+	}
+}
+
+@media screen and (max-width: 440px){
+	.form-title-img-cont{
+		max-width: 100px;
+	}
+	
+	.password-link-cont{
+		flex-direction: column;
+		justify-content: space-between;
+	}
+	
+	.password-link:nth-of-type(1){
+		margin-bottom: 8px;
+	}
+}
+
+@media screen and (max-width: 440px){
+	.form-card-cont{
+		padding: 1rem;
+	}
+}

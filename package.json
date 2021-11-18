@@ -21,6 +21,7 @@
     "gifsicle": "^5.2.1",
     "googleapis": "^88.2.0",
     "mongoose": "^6.0.4",
-    "nodemailer": "^6.7.0"
+    "nodemailer": "^6.7.0",
+    "uuid": "^8.3.2"
   }
 }

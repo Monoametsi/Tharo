@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<%- include("partials/head-info") -%>
+<body>
+	
+	<% const { name, password } = formData; %>
+	
+	<div class="form-card-cont">
+		<div class="card-cont">
+			<div class="form-title-img-cont">
+				<img src="/media/Images/Tharo-icon.png" class="form-title-img">
+			</div>
+			
+			<% if(userFound === false) { %>
+			<div class="auth-err-cont">
+				<span class="err-msg" style="display: flex;">Invalid name or password</span>
+			</div>
+			<% } %>
+			
+			<div class="form-cont">
+				<form method="POST" action="/login" class="form">
+					<% if(name === undefined) { %>
+					<div class="input-cont">
+						<input type="text" placeholder="Full Name" class="input-styling" id="name" name="name">
+						<label for="name">Full Name</label>
+						<span class="err-msg"></span>
+					</div>
+					<% }else if(name !== undefined && name.trim().length === 0){ %>
+					<div class="input-cont">
+						<input type="text" placeholder="Full Name" class="input-styling red-border" id="name" name="name">
+						<label for="name">Full Name</label>
+						<span class="err-msg" style="display: flex;">Required</span>
+					</div>
+					<% }else{ %>
+					<div class="input-cont">
+						<input type="text" placeholder="Full Name" class="input-styling" id="name" name="name" value="<%= name %>">
+						<label for="name" class="display-label">Full Name</label>
+						<span class="err-msg"></span>
+					</div>
+					<% } %>
+					
+					<% if(password === undefined) { %>
+					<div class="input-cont last-child">
+						<input type="password" placeholder="Password" class="input-styling" id="password" name="password">
+						<label for="password">Password</label>
+						<span class="err-msg"></span>
+					</div>
+					<% }else if(password !== undefined && password.trim().length === 0){ %>
+					<div class="input-cont last-child">
+						<input type="password" placeholder="Password" class="input-styling red-border" id="password" name="password">
+						<label for="password">Password</label>
+						<span class="err-msg" style="display: flex;">Required</span>
+					</div>
+					<% }else { %>
+					<div class="input-cont last-child">
+						<input type="password" placeholder="Password" class="input-styling" id="password" name="password" value="<%= password %>">
+						<label for="password" class="display-label">Password</label>
+						<span class="err-msg"></span>
+					</div>
+					<% } %>
+					
+					<div class="sub-btn-cont">
+						<input type="submit" value="Log in" id="sub-btn">
+					</div>
+					
+					<div class="password-link-cont">
+						<div class="password-link">
+							<a href="/create-password">Create a password</a>
+						</div>
+						
+						<div class="password-link">
+							<a href="/reset">Forgot your password?</a>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</body>
+<script src="/JS/auth.js"></script>
+</html>

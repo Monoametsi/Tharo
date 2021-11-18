@@ -6,12 +6,25 @@
 <link rel="stylesheet" href="/fontawesome-free-5.13.0-web/css/all.css">
 <link rel="stylesheet" href="/font-awesome-4.7.0/css/font-awesome.min.css">
 <% if(req.url !== '/') { %>
-<link rel="stylesheet" href="/CSS/submission-results.css">
+
+<% if(req.url === '/submission-success' || req.url === '/submission-failure') { %>
+	<link rel="stylesheet" href="/CSS/submission-results.css">
+<% } %>
+
+<% if(req.url === "/create-password" || req.url === '/login' || req.url === '/login/') { %>
+	<link rel="stylesheet" href="/CSS/login.css">
+	<link rel="stylesheet" href="/CSS/login-mobile.css">
+<% } %>
+
 <% if(req.url === '/submission-success') { %>
 <title>Successful Submission | Tharo</title>
-<% }else { %>
+<% }else if(req.url === '/submission-failure'){ %>
 <title>Failed Submission | Tharo</title>
-<% }%>
+<% } else if(req.url === '/login' || req.url === '/login/') { %>
+<title>Login | Tharo</title>
+<% }else if(req.url === "/create-password"){ %>
+<title>Create Password | Tharo</title>
+<% } %>
 
 <% }else { %>
 <link rel="stylesheet" href="/CSS/index.css">
