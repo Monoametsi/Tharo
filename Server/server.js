@@ -44,7 +44,7 @@ app.post('/login', loginPost);
 
 app.get('/create-password', createPasswordGet);
 
-/* app.post('/login', loginPost); */
+/* app.post('/create-password', createPasswordPost); */
 
 const PORT = process.env.PORT;
 const db_url = process.env.DATABASE;
