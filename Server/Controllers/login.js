@@ -1,5 +1,8 @@
+const form_val_func = require("./form-val.js");
+const { fieldValidator } = form_val_func;
 const siteOwner = require('../Model/user.js')
 const { userModel } = siteOwner;
+const bcrypt = require('bcrypt');
 
 const loginGet = (req, res) => {
 	const formData = {
@@ -37,11 +40,60 @@ const loginPost = async (req, res) => {
 }
 
 const createPasswordGet = (req, res) => {
-	return res.status(200).render('create-password');
+	const formData = {
+		name: undefined,
+		ID: undefined,
+		password: undefined,
+		confirm: undefined
+	}
+	
+	let pwdErr = notFound = undefined;
+	
+	return res.status(200).render('create-password', { formData, notFound, pwdErr, fieldValidator });
+}
+
+const createPasswordPost = async (req, res) => {
+	const formData = req.body;
+	const { name, ID, password, confirm } = formData;
+	let pwdErr = notFound = undefined;
+	const errCheck = !fieldValidator.checkEmpty(name)[1] || !fieldValidator.checkEmpty(ID)[1];
+	const errCheckPwd = !fieldValidator.checkEmpty(password)[1] || !fieldValidator.checkEmpty(confirm)[1] || fieldValidator.newPwdValidatior(password, confirm) === false;
+	
+	if(errCheck || errCheckPwd){
+		
+		if(fieldValidator.newPwdValidatior(password, confirm) === false){
+			pwdErr = true;
+		}
+		
+		return res.status(200).render('create-password', { formData, pwdErr, notFound, fieldValidator });
+	}else{
+		const findOwner = await userModel.findOne({ Name: name, User_Id: ID }).exec();
+		
+		if(findOwner){
+			if(findOwner.Password.length === 0){
+				const salt = await bcrypt.genSalt();
+				const userName = { Name: findOwner.Name };
+				let pwd = await bcrypt.hash(password, salt);
+				pwd = { Password: pwd }
+				
+				const passwordInsert = userModel.findOneAndUpdate(userName, pwd, { new:true }, (err, result) => {
+					if (err) return res.redirect('/password-created-failure');
+					
+					return res.redirect('/password-created-success');
+				});
+			}else{
+				
+			}
+		}else{
+			notFound = true;
+			return res.status(200).render('create-password', { formData, pwdErr, notFound, fieldValidator });
+		}
+	}
 }
 
 module.exports = {
 	loginGet,
 	loginPost,
-	createPasswordGet
+	createPasswordGet,
+	createPasswordPost
 }

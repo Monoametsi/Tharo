@@ -7,7 +7,7 @@
 <link rel="stylesheet" href="/font-awesome-4.7.0/css/font-awesome.min.css">
 <% if(req.url !== '/') { %>
 
-<% if(req.url === '/submission-success' || req.url === '/submission-failure') { %>
+<% if(req.url === '/submission-success' || req.url === '/submission-failure' || req.url === "/password-created-success" || req.url === "/password-created-failure") { %>
 	<link rel="stylesheet" href="/CSS/submission-results.css">
 <% } %>
 
@@ -16,10 +16,18 @@
 	<link rel="stylesheet" href="/CSS/login-mobile.css">
 <% } %>
 
+<% if(req.url === '/submission-success' || req.url === "/password-created-success") { %>
 <% if(req.url === '/submission-success') { %>
 <title>Successful Submission | Tharo</title>
-<% }else if(req.url === '/submission-failure'){ %>
+<% }else{ %>
+<title>Password Created | Tharo</title>
+<% }%>
+<% }else if(req.url === '/submission-failure' || req.url === "/password-created-failure"){ %>
+<% if(req.url === '/submission-failure') { %>
 <title>Failed Submission | Tharo</title>
+<% }else{ %>
+<title>Password Creation failure | Tharo</title>
+<% } %>
 <% } else if(req.url === '/login' || req.url === '/login/') { %>
 <title>Login | Tharo</title>
 <% }else if(req.url === "/create-password"){ %>

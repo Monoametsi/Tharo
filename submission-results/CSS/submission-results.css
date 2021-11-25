@@ -23,6 +23,11 @@ body{
 	margin: 0;
 	padding: 0;
 	font-family: "Poppins", sans-serif;
+	background-color: #FFD59A;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: cover;
+	background-image: url('/media/Images/Dog-accessories.png');
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -64,7 +69,7 @@ a{
 	width: 100%;
 	justify-content: center;
 	align-items: center;
-	background-color: #fff;
+	background-color: #FFD59A;
 	border-radius: 5px;
 	box-shadow: 0 0 25px rgba(0,0,0,0.2);
 }
