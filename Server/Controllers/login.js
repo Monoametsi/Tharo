@@ -30,8 +30,10 @@ const loginPost = async (req, res) => {
 			if(Password.length === 0){
 				userFound = false;
 				return res.status(200).render('login',  { formData, userFound });
+			}else{
+				
 			}
-			
+		
 		}else{
 			userFound = false;
 			return res.status(200).render('login',  { formData, userFound });
@@ -48,14 +50,16 @@ const createPasswordGet = (req, res) => {
 	}
 	
 	let pwdErr = notFound = undefined;
+	let isRegistered = false;
 	
-	return res.status(200).render('create-password', { formData, notFound, pwdErr, fieldValidator });
+	return res.status(200).render('create-password', { formData, notFound, pwdErr, fieldValidator, isRegistered });
 }
 
 const createPasswordPost = async (req, res) => {
 	const formData = req.body;
 	const { name, ID, password, confirm } = formData;
 	let pwdErr = notFound = undefined;
+	let isRegistered = false;
 	const errCheck = !fieldValidator.checkEmpty(name)[1] || !fieldValidator.checkEmpty(ID)[1];
 	const errCheckPwd = !fieldValidator.checkEmpty(password)[1] || !fieldValidator.checkEmpty(confirm)[1] || fieldValidator.newPwdValidatior(password, confirm) === false;
 	
@@ -65,7 +69,7 @@ const createPasswordPost = async (req, res) => {
 			pwdErr = true;
 		}
 		
-		return res.status(200).render('create-password', { formData, pwdErr, notFound, fieldValidator });
+		return res.status(200).render('create-password', { formData, pwdErr, notFound, fieldValidator, isRegistered });
 	}else{
 		const findOwner = await userModel.findOne({ Name: name, User_Id: ID }).exec();
 		
@@ -82,18 +86,75 @@ const createPasswordPost = async (req, res) => {
 					return res.redirect('/password-created-success');
 				});
 			}else{
-				
+				isRegistered = true;
+				return res.status(200).render('create-password', { formData, pwdErr, notFound, fieldValidator, isRegistered });
 			}
 		}else{
 			notFound = true;
-			return res.status(200).render('create-password', { formData, pwdErr, notFound, fieldValidator });
+			return res.status(200).render('create-password', { formData, pwdErr, notFound, fieldValidator, isRegistered });
 		}
 	}
+}
+
+const resetPasswordGet = (req, res) => {
+	const formData = {
+		name: undefined,
+		ID: undefined,
+		password: undefined,
+		confirm: undefined
+	}
+	
+	let pwdErr = notFound = passwordExist = undefined;
+	
+	return res.status(200).render('reset', { formData, pwdErr, fieldValidator, notFound, passwordExist });
+}
+
+const resetPasswordPost = async (req, res) => {
+	const formData = req.body;
+	const { name, ID, password, confirm } = formData;
+	let pwdErr = notFound = passwordExist = undefined;
+	const errCheck = !fieldValidator.checkEmpty(name)[1] || !fieldValidator.checkEmpty(ID)[1];
+	const errCheckPwd = !fieldValidator.checkEmpty(password)[1] || !fieldValidator.checkEmpty(confirm)[1] || fieldValidator.newPwdValidatior(password, confirm) === false;
+	
+	if(errCheck || errCheckPwd){
+		
+		if(fieldValidator.newPwdValidatior(password, confirm) === false){
+			pwdErr = true;
+		}
+		
+		return res.status(200).render('reset', { formData, pwdErr, notFound, fieldValidator, passwordExist });
+	}else{
+		const findOwner = await userModel.findOne({ Name: name, User_Id: ID }).exec();
+		
+		if(findOwner){
+			if(findOwner.Password.length === 0){
+				passwordExist = false;
+				return res.status(200).render('reset', { formData, pwdErr, notFound, fieldValidator, passwordExist });
+			}else{
+				const salt = await bcrypt.genSalt();
+				const userName = { Name: findOwner.Name };
+				let pwd = await bcrypt.hash(password, salt);
+				pwd = { Password: pwd }
+				
+				const passwordInsert = userModel.findOneAndUpdate(userName, pwd, { new:true }, (err, result) => {
+					if (err) return res.redirect('/password-reset-failure');
+					
+					return res.redirect('/password-reset-success');
+				});
+			}
+		}else{
+			notFound = true;
+			return res.status(200).render('reset', { formData, pwdErr, notFound, fieldValidator, passwordExist });
+		}
+	}
+	
 }
 
 module.exports = {
 	loginGet,
 	loginPost,
 	createPasswordGet,
-	createPasswordPost
+	createPasswordPost,
+	resetPasswordGet,
+	resetPasswordPost
 }

@@ -4,7 +4,7 @@
 <body>
 	<div class="sub-results-modal-cont" id="sub-results-modal-cont">
 		<div class="sub-results-modal-content" id="sub-results-modal-content"> 
-		<% if(req.url === "/submission-success" || req.url === "/password-created-success") { %>
+		<% if(req.url === "/submission-success" || req.url === "/password-created-success" || req.url === "/password-reset-success") { %>
 			<div class="results-cont success" id="success">
 			<!-- Sucess --Start-- -->
 				<i class="fa fa-check"></i>
@@ -13,12 +13,19 @@
 				<h4>Your password has been successfully created!!!</h4>
 				<h4>Click <a href="/login" class="link">here</a> to login.</h4>
 				<% }else{ %>
-				<h4>Your submission was successful!!!</h4>
-				<h4>Click <a href="/" class="link">here</a> to return to home page.</h4>
+				
+				<% if(req.url === "/password-reset-success") { %>
+					<h4>Your password has been successfully reset!!!</h4>
+					<h4>Click <a href="/login" class="link">here</a> to login.</h4>
+				<% }else{ %>
+					<h4>Your submission was successful!!!</h4>
+					<h4>Click <a href="/" class="link">here</a> to return to home page.</h4>
+				<% } %>
+				
 				<% } %>
 			<!-- Sucess --End-- -->
 			</div>
-		<% }else if(req.url === "/submission-failure" || req.url === "/password-created-failure"){ %>
+		<% }else if(req.url === "/submission-failure" || req.url === "/password-created-failure" || req.url === "/password-reset-failure"){ %>
 			
 			<div class="results-cont fail" id="fail">
 			<!-- Failure --Start-- -->
@@ -28,7 +35,13 @@
 				<% if(req.url === "/password-created-failure") { %>
 				<h4>Click <a href="/create-password" class="link">here</a> to try creating a password again.</h4>
 				<% }else{ %>
-				<h4>Click <a href="/" class="link">here</a> to return to home page.</h4>
+				
+				<% if(req.url === "/password-reset-failure") { %>
+					<h4>Click <a href="/reset" class="link">here</a> to try again.</h4>
+				<% }else{ %>
+					<h4>Click <a href="/" class="link">here</a> to return to home page.</h4>
+				<% } %>
+				
 				<% } %>
 			<!-- Failure --End-- -->
 			</div>

@@ -7,31 +7,46 @@
 <link rel="stylesheet" href="/font-awesome-4.7.0/css/font-awesome.min.css">
 <% if(req.url !== '/') { %>
 
-<% if(req.url === '/submission-success' || req.url === '/submission-failure' || req.url === "/password-created-success" || req.url === "/password-created-failure") { %>
-	<link rel="stylesheet" href="/CSS/submission-results.css">
+<% const formSubUrls = ['/submission-success', '/submission-failure', '/password-created-success'
+,'/password-created-failure','/password-reset-success','/password-reset-failure']; %>
+
+<% const routeFileAdder = (url) => { %>
+	
+	<% if(req.url === url) { %>
+		<link rel="stylesheet" href="/CSS/submission-results.css">
+	<% } %>
+	
 <% } %>
 
-<% if(req.url === "/create-password" || req.url === '/login' || req.url === '/login/') { %>
+<% formSubUrls.forEach(routeFileAdder); %>
+
+<% if(req.url === "/create-password" || req.url === '/login' || req.url === '/login/' || req.url === '/reset') { %>
 	<link rel="stylesheet" href="/CSS/login.css">
 	<link rel="stylesheet" href="/CSS/login-mobile.css">
 <% } %>
 
-<% if(req.url === '/submission-success' || req.url === "/password-created-success") { %>
+<% if(req.url === '/submission-success' || req.url === "/password-created-success" || req.url === "/password-reset-success") { %>
 <% if(req.url === '/submission-success') { %>
 <title>Successful Submission | Tharo</title>
-<% }else{ %>
+<% }else if(req.url === "/password-created-success"){ %>
 <title>Password Created | Tharo</title>
-<% }%>
-<% }else if(req.url === '/submission-failure' || req.url === "/password-created-failure"){ %>
+<% } else {%>
+<title>Password Reset Success | Tharo</title>
+<% } %>
+<% }else if(req.url === '/submission-failure' || req.url === "/password-created-failure" || req.url === "/password-reset-failure"){ %>
 <% if(req.url === '/submission-failure') { %>
 <title>Failed Submission | Tharo</title>
-<% }else{ %>
+<% }else if(req.url === "/password-created-failure"){ %>
 <title>Password Creation failure | Tharo</title>
+<% }else{ %>
+<title>Password Reset failure | Tharo</title>
 <% } %>
 <% } else if(req.url === '/login' || req.url === '/login/') { %>
 <title>Login | Tharo</title>
 <% }else if(req.url === "/create-password"){ %>
 <title>Create Password | Tharo</title>
+<% }else if(req.url === "/reset"){ %>
+<title>Reset Password | Tharo</title>
 <% } %>
 
 <% }else { %>

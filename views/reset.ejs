@@ -18,17 +18,16 @@
 					<span class="err-msg" id="err-msg" style="display: flex;">Invalid name or ID.</span>
 				</div>
 			<% }else{ %>
-				
-				<% if(isRegistered) { %>
+			
+				<% if(passwordExist === false) { %>
 				<div class="auth-err-cont">
-					<span class="err-msg" id="err-msg" style="display: initial;">You already registered a password. Click <a href="/reset" class="link">here</a> to reset your password.</span>
+					<span class="err-msg" id="err-msg" style="display: initial;">You have not created a password. Click <a href="/create-password" class="link">here</a> to create your password.</span>
 				</div>
-				<% }else{ %>
+				<% }else { %>
 				<div class="auth-err-cont">
 					<span class="err-msg" id="err-msg"></span>
 				</div>
 				<% } %>
-				
 				
 			<% } %>
 			<% }else{ %>
@@ -38,7 +37,7 @@
 			<% } %>
 			
 			<div class="form-cont">
-				<form method="POST" action="/create-password" class="form">
+				<form method="POST" action="/reset" class="form">
 					<% if(name === undefined) { %>
 					<div class="input-cont">
 						<input type="text" placeholder="Full Name" class="input-styling" id="name" name="name">
@@ -159,7 +158,7 @@
 					</div>
 					
 					<div class="sub-btn-cont">
-						<input type="submit" value="Create password" id="sub-btn">
+						<input type="submit" value="Reset password" id="sub-btn">
 					</div>
 					
 				</form>

@@ -6,7 +6,7 @@ const mongoose = require("mongoose");
 const age_calculator = require("./Controllers/age-calculator.js");
 const { displayLaspedTime } = age_calculator;
 const login = require("./Controllers/login.js");
-const { loginGet, loginPost, createPasswordGet, createPasswordPost } = login;
+const { loginGet, loginPost, createPasswordGet, createPasswordPost, resetPasswordGet, resetPasswordPost } = login;
 const indexPost = require("./Controllers/post-form.js");
 const { index_post, index_get } = indexPost;
 const dirname = __dirname.slice(0, __dirname.search(/Server/i) - 1);
@@ -46,6 +46,14 @@ app.get('/password-created-failure', (req, res) => {
 	res.status(500).render('submission-results')
 });
 
+app.get('/password-reset-success', (req, res) => {
+	res.status(200).render('submission-results')
+});
+
+app.get('/password-reset-failure', (req, res) => {
+	res.status(500).render('submission-results')
+});
+
 app.get('/login', loginGet);
 
 app.post('/login', loginPost);
@@ -53,6 +61,10 @@ app.post('/login', loginPost);
 app.get('/create-password', createPasswordGet);
 
 app.post('/create-password', createPasswordPost);
+
+app.get('/reset', resetPasswordGet);
+
+app.post('/reset', resetPasswordPost);
 
 const PORT = process.env.PORT;
 const db_url = process.env.DATABASE;

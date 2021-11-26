@@ -187,6 +187,16 @@ label{
 	background-color: #BE6526;
 }
 
+.link{
+	transition: 0.2s;
+	color: #BE6526;
+	border-bottom: 1px solid transparent;
+}
+
+.link:hover{
+	border-bottom: 1px solid #BE6526;
+}
+
 .password-link-cont{
 	display: flex;
 	align-items: center;
