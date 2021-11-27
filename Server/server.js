@@ -6,7 +6,7 @@ const mongoose = require("mongoose");
 const age_calculator = require("./Controllers/age-calculator.js");
 const { displayLaspedTime } = age_calculator;
 const login = require("./Controllers/login.js");
-const { loginGet, loginPost, createPasswordGet, createPasswordPost, resetPasswordGet, resetPasswordPost } = login;
+const { loginGet, loginPost, createPasswordGet, createPasswordPost, resetPasswordGet, resetPasswordPost, requireAuth, logout, checkUser } = login;
 const indexPost = require("./Controllers/post-form.js");
 const { index_post, index_get } = indexPost;
 const dashboard = require("./Controllers/dashboard.js");
@@ -24,6 +24,8 @@ app.use(express.static(path.join(dirname, 'login')));
 app.use(cookieParser());
 dotenv.config({path: path.join(__dirname, '.env')});
 app.set('view engine', 'ejs');
+
+app.use('*', checkUser);
 
 app.use('*', (req, res, next) => {
 	res.locals.req = req;
@@ -62,6 +64,8 @@ app.get('/login', loginGet);
 
 app.post('/login', loginPost);
 
+app.get('/logout', logout);
+
 app.get('/create-password', createPasswordGet);
 
 app.post('/create-password', createPasswordPost);
@@ -70,7 +74,7 @@ app.get('/reset', resetPasswordGet);
 
 app.post('/reset', resetPasswordPost);
 
-app.get('/dashboard', dashboardGet);
+app.get('/dashboard', requireAuth, dashboardGet);
 
 const PORT = process.env.PORT;
 const db_url = process.env.DATABASE;

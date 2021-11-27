@@ -15,6 +15,24 @@ const createToken = (id) => {
 	});
 }
 
+const requireAuth = (req, res, next) => {
+	const token = req.cookies.jwt;
+	
+	if(token){
+		jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, decodedToken) => {
+			if(err){
+				console.log(err);
+				return res.redirect('/login');
+			}else{
+				console.log(decodedToken);
+				next();
+			}
+		})
+	}else{
+		res.redirect('/login');
+	}
+}
+
 const loginGet = (req, res) => {
 	const formData = {
 		name: undefined,
@@ -59,6 +77,33 @@ const loginPost = async (req, res) => {
 			userFound = false;
 			return res.status(200).render('login',  { formData, userFound });
 		}
+	}
+}
+
+const logout = (req, res) => {
+	res.cookie('jwt', '', { maxAge: 1 });
+	res.redirect('/login');
+}
+
+const checkUser = async (req, res, next) => {
+	const token = req.cookies.jwt;
+	
+	if(token){
+		jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, async (err, decodedToken) => {
+			if(err){
+				console.log(err);
+				res.locals.user = null;
+				next();
+			}else{
+				console.log(decodedToken);
+				let user = await userModel.findOne({ _id: decodedToken.id }).exec();
+				res.locals.user = user;
+				next();
+			}
+		})
+	}else{
+		res.locals.user = null;
+		next();
 	}
 }
 
@@ -177,5 +222,8 @@ module.exports = {
 	createPasswordGet,
 	createPasswordPost,
 	resetPasswordGet,
-	resetPasswordPost
+	resetPasswordPost,
+	requireAuth,
+	logout,
+	checkUser
 }
