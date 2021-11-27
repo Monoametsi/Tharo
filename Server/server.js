@@ -9,15 +9,19 @@ const login = require("./Controllers/login.js");
 const { loginGet, loginPost, createPasswordGet, createPasswordPost, resetPasswordGet, resetPasswordPost } = login;
 const indexPost = require("./Controllers/post-form.js");
 const { index_post, index_get } = indexPost;
+const dashboard = require("./Controllers/dashboard.js");
+const { dashboardGet } = dashboard;
 const dirname = __dirname.slice(0, __dirname.search(/Server/i) - 1);
 const dotenv = require("dotenv");
 const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
 app.disable('etag');
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(dirname)));
 app.use(express.static(path.join(dirname, 'submission-results')));
 app.use(express.static(path.join(dirname, 'login')));
+app.use(cookieParser());
 dotenv.config({path: path.join(__dirname, '.env')});
 app.set('view engine', 'ejs');
 
@@ -65,6 +69,8 @@ app.post('/create-password', createPasswordPost);
 app.get('/reset', resetPasswordGet);
 
 app.post('/reset', resetPasswordPost);
+
+app.get('/dashboard', dashboardGet);
 
 const PORT = process.env.PORT;
 const db_url = process.env.DATABASE;

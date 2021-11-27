@@ -3,6 +3,17 @@ const { fieldValidator } = form_val_func;
 const siteOwner = require('../Model/user.js')
 const { userModel } = siteOwner;
 const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
+const dotenv = require('dotenv');
+const path = require('path');
+dotenv.config({path: path.join(__dirname, '.env')});
+
+const maxAge = 3 * 24 * 60 * 60;
+const createToken = (id) => {
+	return jwt.sign({ id }, process.env.ACCESS_TOKEN_SECRET, {
+		expiresIn: maxAge
+	});
+}
 
 const loginGet = (req, res) => {
 	const formData = {
@@ -31,6 +42,16 @@ const loginPost = async (req, res) => {
 				userFound = false;
 				return res.status(200).render('login',  { formData, userFound });
 			}else{
+				const passwordMatch = await bcrypt.compare(password.trim(), Password);
+				
+				if(passwordMatch){
+					const token = createToken(findOwner._id);
+					res.cookie('jwt', token, { httpOnly: true, maxAge: maxAge * 1000 });
+					return res.redirect('/dashboard');
+				}else{
+					userFound = false;
+					return res.status(200).render('login',  { formData, userFound });
+				}
 				
 			}
 		
