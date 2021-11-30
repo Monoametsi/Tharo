@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:300,300i,400,400i,500,500i,600,600i,700,700i');
+@import url('https://fonts.googleapis.com/css?family=Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i%20|%20Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i%20|%20Hind:300,400,500,600,700');
+
+*{
+	box-sizing: border-box;
+}
+
+::-moz-selection {
+	color: #fff;
+	background-color: #BE6526;
+}
+
+::selection {
+	color: #fff;
+	background-color: #BE6526;
+}
+
+body{
+	margin: 0;
+	padding: 0;
+	font-family: "Poppins", sans-serif;
+	background-color: #FFD59A;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: cover;
+	background-image: url('/Images/Dog-accessories.png');
+}
+
+a{
+	text-decoration: none;
+}
+
+.header-cont{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 1rem 2rem;
+}
+
+.header{
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	width: 100%;
+	max-width: 1280px;
+}
+
+.logout-cont a{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 8px;
+	color: #fff;
+	background-color: rgba(240, 101, 38, 1);
+	border-radius: 5px;
+	font-size: 1.2rem;
+	transition: 0.2s;
+}
+
+.logout-cont a:hover{
+	box-shadow: 0 0 5px rgba(0,0,0,0.2);
+	background-color: #BE6526;
+}
+
+.page-title-cont{
+	display: flex;
+	align-items: center;
+	cursor: pointer;
+}
+
+.page-title-cont:hover .fa-arrow-left{
+	color: #BE6526;
+}
+
+.fa-arrow-left{
+	transition: 0.3s;
+	font-size: 1.2rem;
+	color: rgba(240, 101, 38, 1);
+	padding-right: 1rem;
+}
+
+.page-title{
+	color: #fff;
+	font-size: 1.4rem;
+}

@@ -6,11 +6,13 @@ const mongoose = require("mongoose");
 const age_calculator = require("./Controllers/age-calculator.js");
 const { displayLaspedTime } = age_calculator;
 const login = require("./Controllers/login.js");
-const { loginGet, loginPost, createPasswordGet, createPasswordPost, resetPasswordGet, resetPasswordPost, requireAuth, logout, checkUser } = login;
+const { loginGet, loginPost, requireAuth, logout, checkUser } = login;
+const passwordAuth = require("./Controllers/password.js");
+const { createPasswordGet, createPasswordPost, resetPasswordGet, resetPasswordPost } = passwordAuth;
 const indexPost = require("./Controllers/post-form.js");
 const { index_post, index_get } = indexPost;
 const dashboard = require("./Controllers/dashboard.js");
-const { dashboardGet } = dashboard;
+const { dashboardGet, myPictures } = dashboard;
 const dirname = __dirname.slice(0, __dirname.search(/Server/i) - 1);
 const dotenv = require("dotenv");
 const bodyParser = require('body-parser');
@@ -21,6 +23,11 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(dirname)));
 app.use(express.static(path.join(dirname, 'submission-results')));
 app.use(express.static(path.join(dirname, 'login')));
+app.use(express.static(path.join(dirname, 'dashboard')));
+app.use(express.static(path.join(dirname, 'dashboard', 'main-page')));
+app.use(express.static(path.join(dirname, 'dashboard', 'my-videos')));
+app.use(express.static(path.join(dirname, 'dashboard', 'my-pictures')));
+app.use(express.static(path.join(dirname, 'media')));
 app.use(cookieParser());
 dotenv.config({path: path.join(__dirname, '.env')});
 app.set('view engine', 'ejs');
@@ -74,7 +81,10 @@ app.get('/reset', resetPasswordGet);
 
 app.post('/reset', resetPasswordPost);
 
-app.get('/dashboard', requireAuth, dashboardGet);
+/* app.get('/dashboard', requireAuth, dashboardGet); */
+app.get('/dashboard', dashboardGet);
+
+app.get('/dashboard/pictures', myPictures);
 
 const PORT = process.env.PORT;
 const db_url = process.env.DATABASE;

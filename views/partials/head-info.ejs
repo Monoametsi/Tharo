@@ -47,6 +47,14 @@
 <title>Create Password | Tharo</title>
 <% }else if(req.url === "/reset"){ %>
 <title>Reset Password | Tharo</title>
+<% }else if(req.url === "/dashboard/" || req.url === "/dashboard"){ %>
+<link rel="stylesheet" href="/CSS/dashboard.css">
+<link rel="stylesheet" href="/CSS/dashboard-mobile.css">
+<title>Dashboard | Tharo</title>
+<% }else if(req.url === '/dashboard/pictures'){ %>
+<link rel="stylesheet" href="/CSS/pictures.css">
+<link rel="stylesheet" href="/CSS/pictures-mobile.css">
+<title>My Pictures | Tharo</title>
 <% } %>
 
 <% }else { %>

@@ -1,0 +1,22 @@
+@media screen and (max-width: 360px){
+	.header-cont{
+		margin-bottom: 2rem;
+	}
+	
+	.dash-link-boxes-cont{
+		padding: 1rem;
+	}
+	
+	.dash-link-boxes{
+		max-width: 100%;
+	}
+	
+	.dash-link-box{
+		width: 100%;
+	}
+	
+	.dash-link-box{
+		margin: 0;
+		margin-bottom: 1rem;
+	}
+}
