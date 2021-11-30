@@ -68,8 +68,17 @@ a{
 	cursor: pointer;
 }
 
-.page-title-cont:hover .fa-arrow-left{
+.page-title-cont:hover > .fa-arrow-left{
 	color: #BE6526;
+	animation-name: move-arrow;
+	animation-duration: 1.2s;
+	animation-iteration-count: infinite;
+}
+
+@keyframes move-arrow{
+	0%{ transform: translate(0) }
+	50%{ transform: translate(8px) }
+	100%{ transform: translate(0) }
 }
 
 .fa-arrow-left{
@@ -81,5 +90,5 @@ a{
 
 .page-title{
 	color: #fff;
-	font-size: 1.4rem;
+	font-size: 1.6rem;
 }
