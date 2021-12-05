@@ -84,7 +84,7 @@ app.post('/reset', resetPasswordPost);
 /* app.get('/dashboard', requireAuth, dashboardGet); */
 app.get('/dashboard', dashboardGet);
 
-app.get('/dashboard/pictures', myPictures);
+app.get('/pictures', myPictures);
 
 const PORT = process.env.PORT;
 const db_url = process.env.DATABASE;
