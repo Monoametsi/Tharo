@@ -1,7 +1,58 @@
 <!DOCTYPE html>
 <html>
+<%- include("partials/head-info") -%>
 <body>
 
-<script src=""></script>
+<div class="header-cont">
+	<div class="header">
+		<a href="/pictures" class="page-title-cont">
+			<i class="fa fa-arrow-left"></i>
+			<h1 class="page-title">Upload Pictures</h1>
+		</a>
+		
+		<div class="logout-cont">
+			<a href="/logout">logout</a>
+		</div>
+	</div>
+</div>
+
+<div class="upload-cont">
+	<div class="upload">
+		<form action="/upload-pictures" method="POST" enctype="multipart/form-data" class="upload-form">
+			<div class="upload-title-cont">
+				<h1> Upload Picture </h1>
+				<ul class="upload-instructions-cont">
+					<li>You can upload .png, .jpg or jpeg images.</li>
+					<li>Maximum file size should be 5MB.</li>
+					<li>3264 x 2448 file size is recommended.</li>
+				</ul>
+			</div>
+			
+			<div class="drage-drop-box-cont">
+				<div class="drag-drop-req-cont">
+					<div class="dd-img-cont">
+						<img src="/upl-img.png" class="dd-img">
+					</div>
+					
+					<div class="dd-title-cont">
+						<h1>Drag and drop an image to upload, or</h1>
+						<div class="upload-btn-cont">
+							<input type="file" class="Image-upload" name="Image_upload" accept="image/*" multiple />
+							<button class="upload-btn">Browse Computer</button>
+						</div>
+					</div>
+					
+					<ul class="upload-instructions-cont">
+						<li>You can upload .png, .jpg or jpeg images.</li>
+						<li>Maximum file size should be 5MB.</li>
+						<li>3264 x 2448 file size is recommended.</li>
+					</ul>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
+
+<!-- <script src=""></script> -->
 </body>
 </html>

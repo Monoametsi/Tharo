@@ -12,7 +12,7 @@ const { createPasswordGet, createPasswordPost, resetPasswordGet, resetPasswordPo
 const indexPost = require("./Controllers/post-form.js");
 const { index_post, index_get } = indexPost;
 const dashboard = require("./Controllers/dashboard.js");
-const { dashboardGet, myPictures } = dashboard;
+const { dashboardGet, myPictures, uploadPictures } = dashboard;
 const dirname = __dirname.slice(0, __dirname.search(/Server/i) - 1);
 const dotenv = require("dotenv");
 const bodyParser = require('body-parser');
@@ -27,7 +27,9 @@ app.use(express.static(path.join(dirname, 'dashboard')));
 app.use(express.static(path.join(dirname, 'dashboard', 'main-page')));
 app.use(express.static(path.join(dirname, 'dashboard', 'my-videos')));
 app.use(express.static(path.join(dirname, 'dashboard', 'my-pictures')));
-app.use(express.static(path.join(dirname, 'media')));
+app.use(express.static(path.join(dirname, 'dashboard', 'file-uploader')));
+app.use(express.static(path.join(dirname, 'media', 'Images')));
+app.use(express.static(path.join(dirname, 'media', 'videos')));
 app.use(cookieParser());
 dotenv.config({path: path.join(__dirname, '.env')});
 app.set('view engine', 'ejs');
@@ -85,6 +87,8 @@ app.post('/reset', resetPasswordPost);
 app.get('/dashboard', dashboardGet);
 
 app.get('/pictures', myPictures);
+
+app.get('/upload-pictures', uploadPictures);
 
 const PORT = process.env.PORT;
 const db_url = process.env.DATABASE;
