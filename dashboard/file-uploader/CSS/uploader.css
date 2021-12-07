@@ -63,7 +63,7 @@ a{
 	background-color: rgba(240, 101, 38, 1);
 }
 
-.logout-cont a,  .img-count{
+.logout-cont a,  .img-count, .sub-btn{
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -137,7 +137,7 @@ a{
 	background-color: #fff;
 	padding: 1rem;
 	border-radius: 5px;
-	box-shadow: 0 0 5px rgba(0,0,0,0.6);
+	box-shadow: 0 0 25px rgba(0,0,0,0.6);
 }
 
 .upload-form{
@@ -145,7 +145,7 @@ a{
 	width: 100%;
 }
 
-.dd-img-cont, .upload-form{
+.dd-img-cont, .upload-form, .sub-btn{
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -156,6 +156,18 @@ a{
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
+}
+
+.upload-title-cont{
+	padding-bottom: 1rem;
+}
+
+.upload-title-cont h1{
+	margin: 0;
+}
+
+.upload-instructions-cont{
+	display: none;
 }
 
 .drage-drop-box-cont{
@@ -189,11 +201,50 @@ a{
 	font-size: 1.2rem;
 }
 
+.uploadImg-btn-cont{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: relative;
+	cursor: pointer;
+}
+
+.Image-upload{
+	position: absolute;
+	visibility: hidden;
+}
+
 .upload-btn{
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	border: 1px dashed #ccc;
+	cursor: pointer;
+	border: 2px dashed #ccc;
 	outline: none;
+	font-family: "Poppins", sans-serif;
+	padding: 8px 12px;
+	font-size: 1rem;
+	font-weight: 600;
+	box-shadow: 0 0 5px #ccc;
+	border-radius: 5px;
+	transition: 0.3s;
 	background-color: transparent;
+}
+
+.upload-btn:hover{
+	color: #fff;
+	background-color: #ccc;
+	box-shadow: 0 0 0 #ccc;
+}
+
+.sub-btn{
+	margin-top: 1rem;
+	cursor: pointer;
+	border: 1px solid transparent;
+}
+
+.sub-btn:hover{
+	color: #BE6526;
+	border: 1px solid #BE6526;
+	background-color: transparent
 }

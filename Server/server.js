@@ -12,7 +12,7 @@ const { createPasswordGet, createPasswordPost, resetPasswordGet, resetPasswordPo
 const indexPost = require("./Controllers/post-form.js");
 const { index_post, index_get } = indexPost;
 const dashboard = require("./Controllers/dashboard.js");
-const { dashboardGet, myPictures, uploadPictures } = dashboard;
+const { dashboardGet, myPictures, uploadPictures, uploadVideos } = dashboard;
 const dirname = __dirname.slice(0, __dirname.search(/Server/i) - 1);
 const dotenv = require("dotenv");
 const bodyParser = require('body-parser');
@@ -89,6 +89,8 @@ app.get('/dashboard', dashboardGet);
 app.get('/pictures', myPictures);
 
 app.get('/upload-pictures', uploadPictures);
+
+app.get('/upload-videos', uploadVideos);
 
 const PORT = process.env.PORT;
 const db_url = process.env.DATABASE;

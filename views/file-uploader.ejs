@@ -20,15 +20,24 @@
 	<div class="upload">
 		<form action="/upload-pictures" method="POST" enctype="multipart/form-data" class="upload-form">
 			<div class="upload-title-cont">
-				<h1> Upload Picture </h1>
+			<% if(req.url === "/upload-pictures") { %>
+				<h1> Upload Images </h1>
 				<ul class="upload-instructions-cont">
 					<li>You can upload .png, .jpg or jpeg images.</li>
 					<li>Maximum file size should be 5MB.</li>
 					<li>3264 x 2448 file size is recommended.</li>
 				</ul>
+			<% }else{ %>
+				<h1> Upload Videos </h1>
+				<ul class="upload-instructions-cont">
+					<li>Only .mp4 videos are allowed.</li>
+					<li>Maximum file size should be 200MB.</li>
+				</ul>
+			<% } %>
 			</div>
 			
 			<div class="drage-drop-box-cont">
+			
 				<div class="drag-drop-req-cont">
 					<div class="dd-img-cont">
 						<img src="/upl-img.png" class="dd-img">
@@ -36,10 +45,10 @@
 					
 					<div class="dd-title-cont">
 						<h1>Drag and drop an image to upload, or</h1>
-						<div class="upload-btn-cont">
+						<label class="uploadImg-btn-cont">
 							<input type="file" class="Image-upload" name="Image_upload" accept="image/*" multiple />
-							<button class="upload-btn">Browse Computer</button>
-						</div>
+							<span class="upload-btn">Browse Computer</span>
+						</label>
 					</div>
 					
 					<ul class="upload-instructions-cont">
@@ -48,7 +57,10 @@
 						<li>3264 x 2448 file size is recommended.</li>
 					</ul>
 				</div>
+			
 			</div>
+			
+			<input type="submit" value="Upload Images" class="sub-btn">
 		</form>
 	</div>
 </div>
