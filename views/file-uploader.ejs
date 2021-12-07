@@ -37,7 +37,7 @@
 			</div>
 			
 			<div class="drage-drop-box-cont">
-			
+			<% if(req.url === "/upload-pictures") {%>
 				<div class="drag-drop-req-cont">
 					<div class="dd-img-cont">
 						<img src="/upl-img.png" class="dd-img">
@@ -57,10 +57,33 @@
 						<li>3264 x 2448 file size is recommended.</li>
 					</ul>
 				</div>
-			
+			<% }else { %>
+				<div class="drag-drop-req-cont">
+					<div class="dd-img-cont">
+						<img src="/upl-vid.png" class="dd-img">
+					</div>
+					
+					<div class="dd-title-cont">
+						<h1>Drag and drop an video to upload, or</h1>
+						<label class="uploadImg-btn-cont">
+							<input type="file" class="Image-upload" name="file_upload" accept=" video/*" multiple />
+							<span class="upload-btn">Browse Computer</span>
+						</label>
+					</div>
+					
+					<ul class="upload-instructions-cont">
+						<li>Only .mp4 videos are allowed.</li>
+						<li>Maximum file size should be 200MB.</li>
+					</ul>
+				</div>
+			<% } %>
 			</div>
 			
+			<% if(req.url === "/upload-pictures") { %>
 			<input type="submit" value="Upload Images" class="sub-btn">
+			<% }else { %>
+			<input type="submit" value="Upload Videos" class="sub-btn">
+			<% } %>
 		</form>
 	</div>
 </div>
