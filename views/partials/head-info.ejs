@@ -58,7 +58,11 @@
 <% }else if(req.url === '/upload-pictures' || req.url === '/upload-videos'){ %>
 <link rel="stylesheet" href="/CSS/uploader.css">
 <link rel="stylesheet" href="/CSS/uploader-mobile.css">
+<% if(req.url === '/upload-pictures') { %>
 <title>Upload Pictures | Tharo</title>
+<% }else{ %>
+<title>Upload Videos | Tharo</title>
+<% } %>
 <% } %>
 
 <% }else { %>

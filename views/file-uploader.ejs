@@ -5,9 +5,13 @@
 
 <div class="header-cont">
 	<div class="header">
-		<a href="/pictures" class="page-title-cont">
+		<a href="/dashboard" class="page-title-cont">
 			<i class="fa fa-arrow-left"></i>
+			<% if(req.url === "/upload-pictures") {%>
 			<h1 class="page-title">Upload Pictures</h1>
+			<% }else { %>
+			<h1 class="page-title">Upload Videos</h1>
+			<% } %>
 		</a>
 		
 		<div class="logout-cont">
@@ -18,6 +22,11 @@
 
 <div class="upload-cont">
 	<div class="upload">
+		
+		<div class="arrow-cont">
+			<i class="fa fa-chevron-left arrows"></i>
+		</div>
+		
 		<form action="/upload-pictures" method="POST" enctype="multipart/form-data" class="upload-form">
 			<div class="upload-title-cont">
 			<% if(req.url === "/upload-pictures") { %>
@@ -46,7 +55,7 @@
 					<div class="dd-title-cont">
 						<h1>Drag and drop an image to upload, or</h1>
 						<label class="uploadImg-btn-cont">
-							<input type="file" class="Image-upload" name="Image_upload" accept="image/*" multiple />
+							<input type="file" id="file-upload" class="Image-upload" name="file_upload" accept="image/*" multiple />
 							<span class="upload-btn">Browse Computer</span>
 						</label>
 					</div>
@@ -66,7 +75,7 @@
 					<div class="dd-title-cont">
 						<h1>Drag and drop an video to upload, or</h1>
 						<label class="uploadImg-btn-cont">
-							<input type="file" class="Image-upload" name="file_upload" accept=" video/*" multiple />
+							<input type="file" id="file-upload" class="Image-upload" name="file_upload" accept="video/*" multiple />
 							<span class="upload-btn">Browse Computer</span>
 						</label>
 					</div>
@@ -80,14 +89,18 @@
 			</div>
 			
 			<% if(req.url === "/upload-pictures") { %>
-			<input type="submit" value="Upload Images" class="sub-btn">
+			<input type="submit" value="Upload Images" class="sub-btn" id="sub-btn">
 			<% }else { %>
-			<input type="submit" value="Upload Videos" class="sub-btn">
+			<input type="submit" value="Upload Videos" class="sub-btn" id="sub-btn">
 			<% } %>
 		</form>
+		
+		<div class="arrow-cont">
+			<i class="fa fa-chevron-right arrows"></i>
+		</div>
 	</div>
 </div>
 
-<!-- <script src=""></script> -->
+<script src="/JS/uploader.js"></script>
 </body>
 </html>

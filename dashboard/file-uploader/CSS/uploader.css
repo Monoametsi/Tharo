@@ -131,13 +131,27 @@ a{
 
 .upload{
 	display: flex;
-	justify-content: center;
+	align-items: center;
+	justify-content: space-between;
 	width: 100%;
 	max-width: 900px;
 	background-color: #fff;
 	padding: 1rem;
 	border-radius: 5px;
 	box-shadow: 0 0 25px rgba(0,0,0,0.6);
+}
+
+.arrow-cont{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 12px;
+}
+
+.arrows{
+	font-size: 2rem;
+	color: #bbb;
+	cursor: pointer;
 }
 
 .upload-form{
@@ -156,6 +170,10 @@ a{
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
+}
+
+.drag-drop-req-cont > .upload-instructions-cont{
+	display: flex;
 }
 
 .upload-title-cont{
