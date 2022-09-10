@@ -16,11 +16,6 @@ const hideOverflow = () => {
 const preloaderObj = function(){
 	const preloaderCont = document.getElementById('preloader-cont');
 	const homeVid = document.getElementById("home-page-vid");
-	/* this.run_preloader = () => {
-		preloaderCont.style.display = 'flex';
-		isOpen = true;
-		hideOverflow();
-	} */
 	
 	this.end_preloader = () => {
 		const body = document.body;

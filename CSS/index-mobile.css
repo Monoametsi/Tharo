@@ -58,14 +58,14 @@
 	}
 	
 	.nav-list li > a > h1{
-		font-size: 4rem;
+		font-size: 3rem;
 		opacity: 1;
 		margin: 0;  
 		transition: 0.2s;
 	}
 	
 	.nav-list li > a > i{
-		font-size: 4.7rem;
+		font-size: 3rem;
 		padding-right: 14px;
 		transition: 0.2s;
 	}
@@ -77,9 +77,13 @@
 	.light-bg-color > .nav-list li > a, .light-bg-color > .nav-list li > a > i{
 		color: #fff;
 	}
+
+	.nav-list li:hover > a, .nav-list li:hover > a > i{
+		color: #000;
+	}
 	
 	.dog-icon-cont{
-		max-width: 5.8rem;
+		max-width: 4.5rem;
 		padding-right: 8px;
 	}
 	
@@ -93,7 +97,6 @@
 	.about-us-cont{
 		width: 90%;
 	}
-	
 	/* .about-us-video-title-cont{
 		left: 50%;
 	} */

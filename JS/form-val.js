@@ -3,7 +3,7 @@ const validator = function(){
 		const inputVal = input.value.trim();
 		const errMsg = input.nextElementSibling;
 		
-		if(inputVal.length === 0 || inputVal === '' || input === null || input === undefined){
+		if(!inputVal){
 			errMsg.style.display = 'flex';
 			errMsg.innerHTML = 'Required';
 			input.classList.add('redBox');
@@ -19,22 +19,15 @@ const validator = function(){
 	this.mailValidator = function(input){
 		const inputVal = input.value.trim();
 		const errMsg = input.nextElementSibling;
+		const mailPattern = /^[a-zA-Z0-9_\.-]+@([a-zA-Z0-9-]+\.)+[a-zA-Z]{1,15}$/;
+		const isValid = mailPattern.test(inputVal);
 		
-		const threeDot = /^\w+([.!#$%&'*+-/=?^_`{|}~]?\w+)*@[A-Za-z0-9]+[-]?[A-Za-z0-9]+\.[A-Za-z]{2,15}\.[A-Za-z]{2}\.[A-Za-z]{2}$/;
-		const oneDot = /^\w+([.!#$%&'*+-/=?^_`{|}~]?\w+)*@[A-Za-z0-9]+[-]?[A-Za-z0-9]+\.[A-Za-z]{2,3}$/;
-		const twoDot = /^\w+([.!#$%&'*+-/=?^_`{|}~]?\w+)*@[A-Za-z0-9]+[-]?[A-Za-z0-9]+\.[A-Za-z]{2}\.[A-Za-z]{2}$/;
-		
-		const threeDotFormat = threeDot.test(inputVal);
-		const oneDotFormat = oneDot.test(inputVal);
-		const twoDotFormat = twoDot.test(inputVal);
-		const emailFormats = threeDotFormat || twoDotFormat || oneDotFormat;
-		
-		if(inputVal.length === 0 || inputVal === '' || input === null || input === undefined){
+		if(!inputVal){
 			errMsg.style.display = 'flex';
 			errMsg.innerHTML = 'Required';
 			input.classList.add('redBox');
 			return false;
-		}else if(!emailFormats){
+		}else if(!isValid){
 			errMsg.style.display = 'flex';
 			errMsg.innerHTML = 'Invalid';
 			input.classList.add('redBox');
@@ -53,7 +46,7 @@ const validator = function(){
 		const telFormat = /^((\+|00|09)\d{2,3}|0)\d{9}$/;
 		const formatTest = telFormat.test(inputVal);
 		
-		if(inputVal.length === 0 || inputVal === '' || input === null || input === undefined){
+		if(!inputVal){
 			errMsg.style.display = 'flex';
 			errMsg.innerHTML = 'Required';
 			input.classList.add('redBox');
@@ -178,7 +171,6 @@ const formSubmitter = async function(event){
 		isOpen = true;
 		hideOverflow();
 		try{
-			
 			const response = await fetch('/', options, form_results.loading());
 			if(response.status !== 200){
 				throw Error(`${ response.status }`)
