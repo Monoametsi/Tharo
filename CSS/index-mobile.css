@@ -159,7 +159,6 @@
 	#about-tharo{
 		background-position: left;
 		background-image: url('/media/Images/about-us-vid_mobile.jpg');
-		/* background-image: linear-gradient(to left, rgba(0,0,0,0.1), rgba(0,0,0,0.1)), url('/Images/about-us-vid_mobile.jpg'); */
 	}
 	
 	.about-us-cont{
